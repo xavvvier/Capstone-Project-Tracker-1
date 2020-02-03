@@ -1,0 +1,56 @@
+﻿hr {
+  border-top: 5px solid black;
+  border-radius: 3px;
+}
+
+h3 {
+  color: #FFC107;
+  font-weight: bolder;
+}
+
+h4 {
+  padding-right: 15px;
+}
+
+input[type=checkbox] {
+  margin-left: 20px;
+}
+
+#category {
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+}
+.fa-plus {
+  padding-top: 2.5px;
+  padding-bottom: 2.5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  border-radius: 5px;
+}
+
+#adminButtons button {
+  padding: .3rem .3rem;
+  font-size: .75rem;
+  line-height: .5; 
+}
+
+button#btnEdit.btn.btn-warning {
+  padding: 7px 8px 6px 8px;
+  border-radius: 7px;
+  background-color: dodgerblue;
+}
+
+#plus {
+  padding: 4px 6px 3px 6px;
+  border-radius: 7px;
+}
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 900px) {
+  html {
+    font-size: 16px;
+  }
+}
