@@ -61,7 +61,7 @@ namespace projectTracker
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseStaticFiles();
             // ---------- added for using session variables
             app.UseSession();

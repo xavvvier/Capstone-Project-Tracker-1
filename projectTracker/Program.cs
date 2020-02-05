@@ -14,6 +14,7 @@ namespace projectTracker
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("Starting application!");
             CreateWebHostBuilder(args).Build().Run();
         }
 
