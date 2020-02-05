@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  aspcore:
+    image: mcr.microsoft.com/dotnet/core/sdk:2.2
+    volumes:
+      - ./projectTracker/:/app
+      - ./nginx-conf/:/etc/nginx/sites-enabled
+    command: >
+      /bin/sh -c '
+      apt-get update && apt-get install -y nginx &&
+      nginx &&
+      cd /app && 
+      dotnet run watch'
+    ports: 
+      - '80:80'
+    depends_on:
+      - postgres
+
+  postgres:
+    image: mdillon/postgis:11-alpine
+    ports:
+      - '5433:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+
+
+volumes:
+  postgres-data: {}
+
