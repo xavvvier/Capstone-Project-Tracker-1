@@ -1,56 +1,32 @@
-﻿hr {
-  border-top: 5px solid black;
-  border-radius: 3px;
+﻿html {
+    font-size: 14px;
+}
+body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    min-width: 320px;
+    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.4285em;
+    color: rgba(0, 0, 0, 0.87);;
+    background-color: #DADADA;
 }
 
-h3 {
-  color: #FFC107;
-  font-weight: bolder;
+body > .grid {
+    height: 100%;
 }
 
-h4 {
-  padding-right: 15px;
+.login .column {
+    max-width: 450px;
 }
 
-input[type=checkbox] {
-  margin-left: 20px;
+.ui.menu{
+    margin: 10px 50px;
+    margin-bottom: 50px;
 }
 
-#category {
-  padding-top: 15px;
-  padding-bottom: 15px;
-
-}
-.fa-plus {
-  padding-top: 2.5px;
-  padding-bottom: 2.5px;
-  padding-right: 5px;
-  padding-left: 5px;
-  border-radius: 5px;
-}
-
-#adminButtons button {
-  padding: .3rem .3rem;
-  font-size: .75rem;
-  line-height: .5; 
-}
-
-button#btnEdit.btn.btn-warning {
-  padding: 7px 8px 6px 8px;
-  border-radius: 7px;
-  background-color: dodgerblue;
-}
-
-#plus {
-  padding: 4px 6px 3px 6px;
-  border-radius: 7px;
-}
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 900px) {
-  html {
-    font-size: 16px;
-  }
+.inline-form{
+    display: inline;
 }

@@ -1,36 +1,33 @@
-﻿
-<div class="row">
-    <div class="pr-3">
-        <h1>Project Tracker</h1>
+﻿@model LoginViewModel
+<div class="login">
+  <div class="ui middle aligned center aligned grid">
+    <div class="column">
+      <h2 class="ui teal image header">
+        <div class="content">
+          Login
+        </div>
+      </h2>
+      <form class="ui large form"  asp-controller="Login" asp-action="Index" method="POST">
+        <div class="ui stacked segment">
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <input type="text" name="username" required placeholder="Username">
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <input type="password" name="password" required placeholder="Password">
+            </div>
+          </div>
+          <button class="ui positive basic button" type="submit">Login</button>
+        </div>
+        @if(ViewBag.Message != null) {
+        <div asp-validation-summary="All" class="ui visible error message"></div>
+        }
+      </form>
     </div>
-    <div class="pt-3 pl-3">
-        <h5>Administration</h5>
-    </div>
+  </div>
 </div>
 
-<form asp-controller="Login" asp-action="Submit">
-    <div class="container">
-        <div class="row mt-2">
-            <div class="col">
-                <h2>Login</h2>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col mt-2">
-                <div class="form-group">
-                    <label for="txtUserName">Username:</label>
-                    <input type="text" name="myUsername" class="form-control" Maxlength="10" />
-                </div>
-                <div class="form-group">
-                    <label for="txtPassword">Password:</label>
-                    <input type="password" name="myPassword" class="form-control" maxlength="10" />
-                </div>
-                <div class="form-group">
-                    <input type="submit" text="Submit" class="btn btn-warning" />
-                    <span class="text-warning" style="margin-left:5px;">@ViewData["feedback"]</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>

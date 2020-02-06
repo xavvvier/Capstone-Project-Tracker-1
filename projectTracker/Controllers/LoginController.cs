@@ -1,45 +1,57 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using projectTracker.Models;
-using System.Web;
+using System.Linq; 
+using System.Threading.Tasks;  
+using Microsoft.AspNetCore.Identity;
 
+namespace projectTracker.Controllers
+{
+    public class LoginController : Controller
+    {
 
-namespace projectTracker.Controllers {
+        private SignInManager<User> _signManager;
 
-    public class LoginController : Controller {
-
-        public IActionResult Index() {
-            return View();
-        } 
-
-[HttpPost]
-        public IActionResult Submit(string myUsername, string myPassword) {
-            try{
-
-                WebLogin webLogin = new WebLogin("Server=localhost;Database=dotnetcoreSamples;Uid=root;Pwd=;SslMode=none;", HttpContext);
-                webLogin.username = myUsername;
-                webLogin.password = myPassword;
-
-                // do I have access?
-                if (webLogin.unlock()) {
-                    //access granted
-                    return RedirectToAction("Index","Admin");
-                } else {
-                    // access denied
-                    ViewData["feedback"] = "Incorrect login. Please try again...";
-                }
-                
-                return View("Index");
-            } catch (Exception e){
-                return Content(e.Message);
-            }
-            
+        //Inject the SingInManager
+        public LoginController(SignInManager<User> signManager)
+        {
+            _signManager = signManager;
         }
 
-        public IActionResult Logout() {
-            HttpContext.Session.Clear();
-            return RedirectToAction("Index", "Home");
-        } 
+        [HttpGet]
+        //Displays the login form
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        //Validates the user credentials and signs in the user
+        public async Task<IActionResult> Index(LoginViewModel login)
+        {
+           if (ModelState.IsValid) {
+              var result = await _signManager.PasswordSignInAsync(login.Username,
+                    login.Password, false ,false);
+
+              if (result.Succeeded) {
+                 //Login Successful, redirect user to Admin/Create view
+                 return RedirectToAction("Index", "Home");
+              }
+           }
+           ViewBag.Message = "Invalid login attempt";
+           ModelState.AddModelError("","Invalid login attempt");
+           return View(login);
+        }
+
+        [HttpGet]
+        //Logs out the user and redirect it to the public front page
+        public async Task<IActionResult> Bye()
+        {
+           await _signManager.SignOutAsync();
+           return RedirectToAction("Index", "Login");
+        }
 
     }
+
 }

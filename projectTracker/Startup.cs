@@ -5,18 +5,24 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using projectTracker.Models;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace projectTracker
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private IServiceProvider serviceProvider;
+        public Startup(IConfiguration configuration, IServiceProvider serviceProvider)
         {
             Configuration = configuration;
+            this.serviceProvider = serviceProvider;
         }
 
         public IConfiguration Configuration { get; }
@@ -27,28 +33,35 @@ namespace projectTracker
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => false;
+                options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddSession();
 
 
+            //Set up mvc
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            services.AddDbContext<projectTracker.Models.ProjectManager>();
             
-            // ---------- added for using session variables
-            services.AddDistributedMemoryCache();
-            services.AddSession(options => {
-                // Set a short timeout for easy testing.
-                options.IdleTimeout = TimeSpan.FromMinutes(20);
+            //Set up EF Core
+            services.AddDbContext<MainDataContext>(options => 
+                  options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+
+            //Set up Identity framework
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<MainDataContext>();
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
                 options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                options.LoginPath = "/Login";
+                // options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.SlidingExpiration = true;
             });
-            // --------------------------------------------
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, MainDataContext dbContext)
         {
             if (env.IsDevelopment())
             {
@@ -56,24 +69,21 @@ namespace projectTracker
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                app.UseExceptionHandler("/Public/Error");
             }
 
-            // app.UseHttpsRedirection();
             app.UseStaticFiles();
-            // ---------- added for using session variables
-            app.UseSession();
-            // --------------------------------------------
             app.UseCookiePolicy();
 
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Login}/{action=Index}/{id?}");
+                    template: "{controller=Login}/{action=Index}");
             });
+
+
         }
     }
 }
