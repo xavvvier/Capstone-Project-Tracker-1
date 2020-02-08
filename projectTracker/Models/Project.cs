@@ -8,6 +8,7 @@ namespace projectTracker.Models
 
         public int Id { get; set; }
         public String Partner { get; set; }
+        public String CurriculumConsultant { get; set; }
         public String Description { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
