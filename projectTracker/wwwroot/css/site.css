@@ -19,6 +19,7 @@ body > .grid {
 }
 
 .login .column {
+    margin-top: 100px;
     max-width: 450px;
 }
 

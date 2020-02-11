@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
+	<div class="ui blue inverted menu">
+		<a class="active item" href="@Url.Action("Index", "Home")">Dashboard</a>
+		<a class="item" href="Projects">Projects</a>
+		<a class="item" href="@Url.Action("Index", "Campus")">Campus</a>
+		<a class="item" href="@Url.Action("Index", "Category")">Category</a>
+		<a class="item" href="@Url.Action("Index", "Status")">Status</a>
+		<div class="right menu">
+            <a class="ui item" href="@Url.Action("Bye", "Login")">Logout</a>
+		</div>
+	</div>
     
      @RenderBody()         
 
