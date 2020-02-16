@@ -15,12 +15,27 @@ namespace projectTracker.Controllers
     [Authorize]
     public class CampusController : Controller {
 
+        // injecting the DbContext object into this controller for use! No more construction needed :)
+        private MainDataContext campusManager;
+        public CampusController(MainDataContext myManager) {
+            campusManager = myManager;
+        }
+
         public IActionResult Index() { 
             return View();
         }
 
-        public IActionResult Add() { 
-            return View("Edit");
+        public IActionResult Add() {
+            Campus campus = new Campus(); 
+            return View(campus);
+        }
+
+        [HttpPost]
+        public IActionResult AddSubmit(Campus campus) {
+            campusManager.Add(campus);
+            campusManager.SaveChanges();
+            
+            return RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id) { 

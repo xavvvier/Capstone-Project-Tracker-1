@@ -15,12 +15,27 @@ namespace projectTracker.Controllers
     [Authorize]
     public class StatusController : Controller {
 
+        // injecting the DbContext object into this controller for use! No more construction needed :)
+        private MainDataContext statusManager;
+        public StatusController(MainDataContext myManager) {
+            statusManager = myManager;
+        }
+
         public IActionResult Index() { 
             return View();
         }
 
-        public IActionResult Add() { 
-            return View("Edit");
+        public IActionResult Add() {
+            ProjectStatus status = new ProjectStatus(); 
+            return View(status);
+        }
+
+        [HttpPost]
+        public IActionResult AddSubmit(ProjectStatus status) {
+            statusManager.Add(status);
+            statusManager.SaveChanges();
+            
+            return RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id) { 
