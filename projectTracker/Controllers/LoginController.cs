@@ -32,7 +32,7 @@ namespace projectTracker.Controllers
         {
            if (ModelState.IsValid) {
               var result = await _signManager.PasswordSignInAsync(login.Username,
-                    login.Password, false ,false);
+                    login.Password, true ,false);
 
               if (result.Succeeded) {
                  //Login Successful, redirect user to Admin/Create view

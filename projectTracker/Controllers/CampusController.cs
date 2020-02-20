@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 using projectTracker.Models;
 
@@ -13,7 +9,10 @@ namespace projectTracker.Controllers
 {
 
     [Authorize]
-    public class CampusController : Controller {
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CampusController : ControllerBase
+    {
 
         // injecting the DbContext object into this controller for use! No more construction needed :)
         private MainDataContext campusManager;
@@ -21,35 +20,49 @@ namespace projectTracker.Controllers
             campusManager = myManager;
         }
 
-        public IActionResult Index() { 
-            return View();
-        }
-
-        public IActionResult Add() {
-            Campus campus = new Campus(); 
-            return View(campus);
-        }
-
-        [HttpPost]
-        public IActionResult AddSubmit(Campus campus) {
-            campusManager.Add(campus);
-            campusManager.SaveChanges();
-            
-            return RedirectToAction("Index");
-        }
-
-        public IActionResult Edit(int id) { 
-            return View();
+        [HttpGet]
+        public IEnumerable<Campus> Index() {
+            //TODO: get list of campuses using MainDataContext
+            var campuses = new List<Campus>
+            {
+                new Campus { Id = 1, Name = "Campus 1" },
+                new Campus { Id = 1, Name = "Campus 2" },
+                new Campus { Id = 1, Name = "Campus 3" },
+            };
+            return campuses;
         }
 
         [HttpPost]
-        public IActionResult Edit() { 
-            return View();
+        public async Task<IActionResult> Add(Campus campus)
+        {
+            try
+            {
+                campusManager.Add(campus);
+                await campusManager.SaveChangesAsync();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        [HttpPost]
-        public IActionResult Delete() { 
-            return View();
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, Campus campus) {
+            //TODO: insert new campus using MainDataContext
+            return BadRequest("Not implemented yet");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id) {
+            var campusItem = await campusManager.Campus.FindAsync(id);
+            if (campusItem == null)
+            {
+                return NotFound();
+            }
+            campusManager.Campus.Remove(campusItem);
+            await campusManager.SaveChangesAsync();
+            return Ok();
         }
 
 

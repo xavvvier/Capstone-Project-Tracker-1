@@ -69,7 +69,7 @@ namespace projectTracker
             }
             else
             {
-                app.UseExceptionHandler("/Public/Error");
+                app.UseExceptionHandler("/Home/Error");
             }
 
             app.UseStaticFiles();
@@ -80,7 +80,7 @@ namespace projectTracker
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Login}/{action=Index}");
+                    template: "{controller=Home}/{action=Index}");
             });
 
 
