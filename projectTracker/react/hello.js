@@ -1,3 +1,4 @@
+import React from 'react';
 
 class Hello extends React.Component {
     constructor(props) {
@@ -10,3 +11,5 @@ class Hello extends React.Component {
         );
     }
 }
+
+export default Hello;
