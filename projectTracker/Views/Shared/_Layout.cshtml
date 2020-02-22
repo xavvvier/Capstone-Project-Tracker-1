@@ -10,11 +10,11 @@
 </head>
 <body>
     <div class="ui blue inverted menu">
-        <a class="active item" href="@Url.Action("Index", "Home")">Dashboard</a>
-        <a class="item" href="Projects">Projects</a>
-        <a class="item" href="@Url.Action("Campus", "Home")">Campus</a>
-        <a class="item" href="@Url.Action("Category", "Home")">Category</a>
-        <a class="item" href="@Url.Action("Status", "Home")">Status</a>
+        <a class="item @(ViewBag.menu == "Dashboard"?"active":"")"" href="@Url.Action("Index", "Home")">Dashboard</a>
+        <a class="item @(ViewBag.menu == "Projects"?"active":"")" href="@Url.Action("Projects", "Home")">Projects</a>
+        <a class="item @(ViewBag.menu == "Campus"?"active":"")" href="@Url.Action("Campus", "Home")">Campus</a>
+        <a class="item @(ViewBag.menu == "Category"?"active":"")" href="@Url.Action("Category", "Home")">Category</a>
+        <a class="item @(ViewBag.menu == "Status"?"active":"")" href="@Url.Action("Status", "Home")">Status</a>
         <div class="right menu">
             <a class="ui item" href="@Url.Action("Bye", "Login")">Logout</a>
         </div>

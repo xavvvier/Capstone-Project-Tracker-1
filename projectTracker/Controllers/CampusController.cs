@@ -47,8 +47,8 @@ namespace projectTracker.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Campus campus) {
+        [HttpPut()]
+        public async Task<IActionResult> Update(Campus campus) {
             //TODO: insert new campus using MainDataContext
             return BadRequest("Not implemented yet");
         }
@@ -58,7 +58,7 @@ namespace projectTracker.Controllers
             var campusItem = await campusManager.Campus.FindAsync(id);
             if (campusItem == null)
             {
-                return NotFound();
+                return NotFound("The element does not exist");
             }
             campusManager.Campus.Remove(campusItem);
             await campusManager.SaveChangesAsync();

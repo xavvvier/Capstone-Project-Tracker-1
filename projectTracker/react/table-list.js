@@ -10,13 +10,15 @@ class TableList extends React.Component {
                     <tr key={item.id}>
                         <td data-label="Name">{item.name}</td>
                         <td data-label="Actions" className="right collapsing aligned">
-                            <button className="ui vertical primary basic animated mini button">
+                            <button className="ui vertical primary basic animated mini button"
+                                onClick={this.props.onEdit.bind(this, item)}>
                                 <span className="hidden content">Edit</span>
                                 <div className="visible content">
                                     <i className="pencil alternate icon"></i>
                                 </div>
                             </button>
-                            <button className="ui vertical negative basic animated mini button">
+                            <button className="ui vertical negative basic animated mini button"
+                                onClick={this.props.onDelete.bind(this, item)}>
                                 <div className="hidden content">Delete</div>
                                 <div className="visible content">
                                     <i className="trash alternate icon"></i>

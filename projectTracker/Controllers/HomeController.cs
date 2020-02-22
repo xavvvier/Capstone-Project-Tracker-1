@@ -27,5 +27,11 @@ namespace projectTracker.Controllers
         {
             return View();
         }
+
+        public IActionResult Projects()
+        {
+            return View();
+        }
+
     }
 }

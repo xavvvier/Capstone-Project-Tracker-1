@@ -51,5 +51,6 @@
     <None Include="appsettings.Development.json" />
     <None Include="appsettings.json" />
     <None Include="package.json" />
+    <None Include="Views\Home\Projects.cshtml" />
   </ItemGroup>
 </Project>
