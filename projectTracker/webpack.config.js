@@ -3,8 +3,8 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   entry: {
-    like_button: './react/like_button.jsx',
-    header: './react/header.jsx'
+    hello: './react/hello.js',
+    name_form: './react/NameForm.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -19,12 +19,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js)$/,
         exclude: /node_modules/,
         use: {
 	        loader: "babel-loader",
 	        options: {
-	        	presets: ["@babel/preset-env", "@babel/preset-react"]
+                presets: ["@babel/preset-env", "@babel/preset-react"],
+                plugins: ['transform-class-properties']
 	        }
         }
       }

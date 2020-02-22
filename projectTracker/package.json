@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --mode development",
+    "watch": "webpack --watch --mode development",
     "build": "webpack --mode production"
   },
   "keywords": [],
@@ -15,10 +15,12 @@
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "^8.0.6",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }

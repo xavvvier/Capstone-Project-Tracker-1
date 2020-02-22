@@ -26,8 +26,8 @@ namespace projectTracker.Controllers
             var campuses = new List<Campus>
             {
                 new Campus { Id = 1, Name = "Campus 1" },
-                new Campus { Id = 1, Name = "Campus 2" },
-                new Campus { Id = 1, Name = "Campus 3" },
+                new Campus { Id = 2, Name = "Campus 2" },
+                new Campus { Id = 3, Name = "Campus 3" },
             };
             return campuses;
         }
@@ -39,7 +39,7 @@ namespace projectTracker.Controllers
             {
                 campusManager.Add(campus);
                 await campusManager.SaveChangesAsync();
-                return Ok();
+                return Ok(campus);
             }
             catch (Exception ex)
             {

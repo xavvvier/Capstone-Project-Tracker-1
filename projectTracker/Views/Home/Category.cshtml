@@ -1,72 +1,10 @@
-﻿@model Category
-	<div class="ui two column stackable centered grid">
-		<div class="column">
-			<h1>Category
-				<a class="ui animated right floated positive basic button" href="@Url.Action("Add", "Category")">
-					<div class="visible content">Add new</div>
-					<div class="hidden content">
-						<i class="right plus icon"></i>
-					</div>
-				</a>
-			</h1>
-            <!--
-			<div class="ui positive message">
-				<div class="header">
-					<?=$message["title"]?>
-				</div>
-				<?=$message["content"]?>
-			</div>
-            -->
-			<table class="ui celled table">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td data-label="Name">Exploration</td>
-						<td data-label="Actions" class="right collapsing aligned">
-							<a href="@Url.Action("Edit", "Category", 1)" class="ui vertical primary basic animated mini button" tabindex="0">
-								<div class="hidden content">Edit</div>
-								<div class="visible content">
-									<i class="pencil alternate icon"></i>
-								</div>
-							</a>
-							<form class="inline-form" action="@Url.Action("Delete", "Category")" onsubmit="return confirm('Do you really want to delete the campus?');" method="post">
-								<input type="hidden" name="id" value="1">
-								<button  class="ui vertical negative basic animated mini button" tabindex="0">
-									<div class="hidden content">Delete</div>
-									<div class="visible content">
-										<i class="trash alternate icon"></i>
-									</div>
-								</button>
-							</form>
-						</td>
-					</tr>
-					<tr>
-						<td data-label="Name">Initial Meeting</td>
-						<td data-label="Actions" class="right collapsing aligned">
-							<a href="@Url.Action("Edit", "Category", 1)" class="ui vertical primary basic animated mini button" tabindex="0">
-								<div class="hidden content">Edit</div>
-								<div class="visible content">
-									<i class="pencil alternate icon"></i>
-								</div>
-							</a>
-							<form class="inline-form" action="@Url.Action("Delete", "Category")" onsubmit="return confirm('Do you really want to delete the campus?');" method="post">
-								<input type="hidden" name="id" value="1">
-								<button  class="ui vertical negative basic animated mini button" tabindex="0">
-									<div class="hidden content">Delete</div>
-									<div class="visible content">
-										<i class="trash alternate icon"></i>
-									</div>
-								</button>
-							</form>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-
+﻿<div class="ui two column stackable centered grid">
+    <div class="column">
+        <h1>Category</h1>
+        <div id="name-form" data-source="category"></div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/react/vendor.bundle.js" asp-append-version="true"></script>
+    <script src="~/js/react/name_form.bundle.js" asp-append-version="true"></script>
+}
