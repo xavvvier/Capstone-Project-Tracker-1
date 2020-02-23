@@ -43,10 +43,18 @@ namespace projectTracker.Controllers
             }
         }
 
-        [HttpPut()]
+        [HttpPut]
         public async Task<IActionResult> Update(ProjectStatus status) {
-            //TODO: insert new status using MainDataContext
-            return BadRequest("Not implemented yet");
+            try
+            {
+                statusManager.Update(status);
+                await statusManager.SaveChangesAsync();
+                return Ok(status);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]

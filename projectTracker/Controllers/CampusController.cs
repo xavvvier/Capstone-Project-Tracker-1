@@ -22,7 +22,6 @@ namespace projectTracker.Controllers
 
         [HttpGet]
         public IEnumerable<Campus> Index() {
-            //TODO: get list of campuses using MainDataContext
             var campuses = new List<Campus>{};
             campuses = campusManager.getCampuses();
             return campuses;
@@ -43,7 +42,7 @@ namespace projectTracker.Controllers
             }
         }
 
-        [HttpPut()]
+        [HttpPut]
         public async Task<IActionResult> Update(Campus campus) {
             try
             {

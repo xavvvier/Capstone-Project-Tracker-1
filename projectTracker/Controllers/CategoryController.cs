@@ -31,8 +31,8 @@ namespace projectTracker.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(Category category)
         {
-            try
-            {
+           try
+             {
                 categoryManager.Add(category);
                 await categoryManager.SaveChangesAsync();
                 return Ok(category);
@@ -40,13 +40,23 @@ namespace projectTracker.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            }
+            }     
+           
         }
 
-        [HttpPut()]
+        [HttpPut]
         public async Task<IActionResult> Update(Category category) {
-            //TODO: insert new category using MainDataContext
-            return BadRequest("Not implemented yet");
+           try
+             {
+                categoryManager.Update(category);
+                await categoryManager.SaveChangesAsync();
+                return Ok(category);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }    
+           
         }
 
         [HttpDelete("{id}")]
