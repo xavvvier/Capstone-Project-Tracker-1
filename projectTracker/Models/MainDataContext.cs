@@ -39,6 +39,26 @@ namespace projectTracker.Models
         public DbSet<Note> Note { get; set; }
         public DbSet<Stage> Stage { get; set; }
 
+        //Get all Campuses ordered by Name 
+        public List<Campus> getCampuses()
+        {
+           return Campus.OrderBy(c => c.Name)
+              .ToList<Campus>();
+        }
+
+        //Get all Categories ordered by Name 
+        public List<Category> getCategories()
+        {
+           return Category.OrderBy(c => c.Name)
+              .ToList<Category>();
+        }
+
+        //Get all Statuses ordered by Name 
+        public List<ProjectStatus> getStatuses()
+        {
+           return ProjectStatus.OrderBy(c => c.Name)
+              .ToList<ProjectStatus>();
+        }
 
         //Get all Categories order by Name including the links associated
         // public IEnumerable<Category> AllCategoriesWithLinks()
