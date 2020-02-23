@@ -31,11 +31,12 @@ class NameForm extends React.Component {
        e.preventDefault();
        this.setState({loading: true});
        //Change the http method depending if the operation is edit or save
-       let method = this.state.editingItem == null ? 'post': 'put';
+        let method = this.state.editingItem == null ? 'post' : 'put';
+        let id = this.state.editingItem !== null ? this.state.editingItem.id : 0;
        axios({
           method: method,
           url: this.source.api,
-          data: { name: this.state.name }
+          data: { id: id, name: this.state.name }
        }).then(res => {
           this.setState({
               displayForm: false,
