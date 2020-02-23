@@ -23,12 +23,8 @@ namespace projectTracker.Controllers
         [HttpGet]
         public IEnumerable<Campus> Index() {
             //TODO: get list of campuses using MainDataContext
-            var campuses = new List<Campus>
-            {
-                new Campus { Id = 1, Name = "Campus 1" },
-                new Campus { Id = 2, Name = "Campus 2" },
-                new Campus { Id = 3, Name = "Campus 3" },
-            };
+            var campuses = new List<Campus>{};
+            campuses = campusManager.getCampuses();
             return campuses;
         }
 
@@ -49,8 +45,18 @@ namespace projectTracker.Controllers
 
         [HttpPut()]
         public async Task<IActionResult> Update(Campus campus) {
+            try
+            {
+                campusManager.Update(campus);
+                await campusManager.SaveChangesAsync();
+                return Ok(campus);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
             //TODO: insert new campus using MainDataContext
-            return BadRequest("Not implemented yet");
+            // return BadRequest("Not implemented yet");
         }
 
         [HttpDelete("{id}")]
