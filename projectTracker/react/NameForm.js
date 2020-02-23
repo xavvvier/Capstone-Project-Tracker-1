@@ -66,8 +66,8 @@ class NameForm extends React.Component {
     }
 
     onConfirmDelete = () => {
-       this.setState({loading: true});
-        axios.delete(this.source.api + '/217')
+        this.setState({ loading: true });
+        axios.delete(this.source.api + '/' + this.deleteItem.id)
           .then(res => this.loadItems())
           .catch(err => {
              this.setState({
