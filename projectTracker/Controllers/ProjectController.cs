@@ -8,7 +8,7 @@ using projectTracker.Models;
 namespace projectTracker.Controllers
 {
 
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ProjectController : ControllerBase
