@@ -14,6 +14,9 @@ namespace projectTracker.Models
         public DateTime EndDate { get; set; }
         public Decimal Value { get; set; }
         public ProjectStatus Status { get; set; }
+        public int CategoryId {get; set;} 
+        public int CampusId {get; set;} 
+        public int StatusId {get; set;} 
         public Category Category { get; set; }
         public Campus Campus { get; set; }
         public ICollection<Note> Notes { get; set; }

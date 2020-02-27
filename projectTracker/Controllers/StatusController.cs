@@ -22,10 +22,7 @@ namespace projectTracker.Controllers
 
         [HttpGet]
         public IEnumerable<ProjectStatus> Index() {
-            //TODO: get list of statuses using MainDataContext
-            var statuses = new List<ProjectStatus>{};
-            statuses = statusManager.getStatuses();
-            return statuses;
+            return statusManager.getStatuses();
         }
 
         [HttpPost]

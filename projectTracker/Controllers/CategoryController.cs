@@ -22,10 +22,7 @@ namespace projectTracker.Controllers
 
         [HttpGet]
         public IEnumerable<Category> Index() {
-            //TODO: get list of categories using MainDataContext
-            var categories = new List<Category>{};
-            categories = categoryManager.getCategories();
-            return categories;
+            return categoryManager.getCategories();
         }
 
         [HttpPost]

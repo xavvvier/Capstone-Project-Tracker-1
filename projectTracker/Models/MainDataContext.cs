@@ -60,6 +60,14 @@ namespace projectTracker.Models
               .ToList<ProjectStatus>();
         }
 
+        //Get all Projects ordered by Name 
+        public List<Project> getProjects()
+        {
+           return Project.OrderBy(c => c.Partner)
+              //.Include(p => p.Category)
+              .ToList<Project>();
+        }
+
         //Get all Categories order by Name including the links associated
         // public IEnumerable<Category> AllCategoriesWithLinks()
         // {

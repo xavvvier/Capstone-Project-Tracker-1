@@ -8,31 +8,31 @@ using projectTracker.Models;
 namespace projectTracker.Controllers
 {
 
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    public class CampusController : ControllerBase
+    public class ProjectController : ControllerBase
     {
 
         // injecting the DbContext object into this controller for use! No more construction needed :)
-        private MainDataContext campusManager;
-        public CampusController(MainDataContext myManager) {
-            campusManager = myManager;
+        private MainDataContext projectManager;
+        public ProjectController(MainDataContext myManager) {
+            projectManager = myManager;
         }
 
         [HttpGet]
-        public IEnumerable<Campus> Index() {
-            return campusManager.getCampuses();
+        public IEnumerable<Project> Index() {
+            return projectManager.getProjects();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(Campus campus)
+        public async Task<IActionResult> Add(Project project)
         {
             try
             {
-                campusManager.Add(campus);
-                await campusManager.SaveChangesAsync();
-                return Ok(campus);
+                projectManager.Add(project);
+                await projectManager.SaveChangesAsync();
+                return Ok(project);
             }
             catch (Exception ex)
             {
@@ -41,30 +41,30 @@ namespace projectTracker.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(Campus campus) {
+        public async Task<IActionResult> Update(Project project) {
             try
             {
-                campusManager.Update(campus);
-                await campusManager.SaveChangesAsync();
-                return Ok(campus);
+                projectManager.Update(project);
+                await projectManager.SaveChangesAsync();
+                return Ok(project);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-            //TODO: insert new campus using MainDataContext
+            //TODO: insert new project using MainDataContext
             // return BadRequest("Not implemented yet");
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id) {
-            var campusItem = await campusManager.Campus.FindAsync(id);
-            if (campusItem == null)
+            var projectItem = await projectManager.Project.FindAsync(id);
+            if (projectItem == null)
             {
                 return NotFound("The element does not exist");
             }
-            campusManager.Campus.Remove(campusItem);
-            await campusManager.SaveChangesAsync();
+            projectManager.Project.Remove(projectItem);
+            await projectManager.SaveChangesAsync();
             return Ok();
         }
 
