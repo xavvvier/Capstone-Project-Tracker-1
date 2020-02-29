@@ -8,9 +8,14 @@ export default class DeleteModal extends React.Component {
             <div className="content">
                   <p>
                       Are you sure you want to delete &nbsp; 
-                      <span className="ui label">
-                          {this.props.content}
-                      </span>
+                      { this.props.content?
+                         (<span className="ui label">
+                             {this.props.content}
+                         </span>):
+                         (<span> 
+                            this {this.props.title}
+                         </span> )
+                      }?
                   </p>
             </div>
             <div className="actions">

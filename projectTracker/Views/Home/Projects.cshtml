@@ -1,12 +1,13 @@
 ﻿@{
     ViewBag.menu = "Projects";
 }
-<div class="ui two column stackable centered grid">
-    <div class="column">
+<div class="">
+    <div class="ui container">
         <h1>Projects</h1>
-        
+         <div id="project-form"></div>        
     </div>
 </div>
 @section Scripts{
-
+    <script src="~/js/react/vendor.bundle.js" asp-append-version="true"></script>
+    <script src="~/js/react/project_form.bundle.js" asp-append-version="true"></script>
 }

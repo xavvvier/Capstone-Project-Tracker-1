@@ -1,0 +1,21 @@
+#Move this file to:  /etc/systemd/system/
+#manage as: sudo systemctl enable/start/status/stop project-tracker.service
+
+[Unit]
+Description=Project Tracker Web page
+
+[Service]
+WorkingDirectory=/app/Capstone-Project-Tracker/projectTracker/bin/Release/netcoreapp2.2/publish
+ExecStart=/usr/bin/dotnet /app/Capstone-Project-Tracker/projectTracker/bin/Release/netcoreapp2.2/publish
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=project-tracker
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+
+[Install]
+WantedBy=multi-user.target
+

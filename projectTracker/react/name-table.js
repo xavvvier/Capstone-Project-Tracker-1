@@ -1,7 +1,7 @@
 ﻿import React from "react";
 
-class TableList extends React.Component {
-    
+class NameTable extends React.Component {
+
     render() {
         return <table className="ui celled table">
             <thead><tr><th>Name</th><th>Actions</th></tr></thead>
@@ -33,4 +33,4 @@ class TableList extends React.Component {
 }
 
 
-export default TableList;
+export default NameTable;

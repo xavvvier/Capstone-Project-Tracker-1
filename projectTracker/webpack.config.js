@@ -3,8 +3,8 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   entry: {
-    hello: './react/hello.js',
-    name_form: './react/NameForm.js'
+    name_form: './react/name-form.js',
+    project_form: './react/project-form.js',
   },
   output: {
     filename: '[name].bundle.js',

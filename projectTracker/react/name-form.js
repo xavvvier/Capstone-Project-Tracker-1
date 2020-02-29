@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import ReactDOM from "react-dom";
-import TableList from "./table-list";
+import NameTable from "./name-table";
 import DeleteModal from "./delete-modal";
 import axios from "axios";
 
@@ -111,7 +111,7 @@ class NameForm extends React.Component {
                 </div>
                :<div></div>
             }
-            <TableList items={this.state.items}
+            <NameTable items={this.state.items}
                onEdit={this.onEdit}
                onDelete={this.onDelete}/>
             <DeleteModal onYes={this.onConfirmDelete} title={this.source.name.toLowerCase()} content={this.deleteItem && this.deleteItem.name}/>
@@ -140,8 +140,7 @@ export default NameForm;
 
 const domContainer = document.querySelector('#name-form')
 const source = domContainer.dataset.source;
-const onSubmitted = domContainer.dataset.submitted;
 ReactDOM.render(
-    React.createElement(NameForm, { source, onSubmitted }),
+    React.createElement(NameForm, { source }),
     domContainer
 );
