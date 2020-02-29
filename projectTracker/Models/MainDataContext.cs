@@ -64,7 +64,9 @@ namespace projectTracker.Models
         public List<Project> getProjects()
         {
            return Project.OrderBy(c => c.Partner)
-              //.Include(p => p.Category)
+              .Include(p => p.Category)
+              .Include(p => p.Campus)
+              .Include(p => p.Status)
               .ToList<Project>();
         }
 
