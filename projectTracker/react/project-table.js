@@ -23,8 +23,8 @@ class ProjectTable extends React.Component {
             <tbody>
                 {this.props.items.map(item => (
                     <tr key={item.id}>
-                        <td data-label="Campus">{item.campusId}</td>
-                        <td data-label="Category">{item.categoryId}</td>
+                        <td data-label="Campus">{item.campus.name}</td>
+                        <td data-label="Category">{item.category.name}</td>
                         <td data-label="Partner">{item.partner}</td>
                         <td data-label="Description">{item.description}</td>
                         <td data-label="Curriculum Consultant">{item.curriculumConsultant}</td>
@@ -35,7 +35,7 @@ class ProjectTable extends React.Component {
                               {this.formatDate(item.endDate)}
                         </td>
                         <td data-label="Value">{item.value}</td>
-                        <td data-label="Status">{item.statusId}</td>
+                        <td data-label="Status">{item.status.name}</td>
                         <td data-label="Actions" className="right collapsing aligned">
                             <button className="ui vertical primary basic animated mini button"
                                 onClick={this.props.onEdit.bind(this, item)}>
