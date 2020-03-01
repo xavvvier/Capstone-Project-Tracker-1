@@ -58,6 +58,10 @@ class ProjectForm extends React.Component {
        //Change the http method depending if the operation is edit or save
        let method = this.state.editingItem == null ? 'post' : 'put';
        let id = this.state.editingItem !== null ? this.state.editingItem.id : 0;
+       //Remove object related entities
+       this.state.project.campus = null;
+       this.state.project.category = null;
+       this.state.project.status = null;
        axios({
           method: method,
           url: this.source.api,
@@ -79,7 +83,11 @@ class ProjectForm extends React.Component {
 
     onAddNew = (e) => { this.setState({ displayForm: true, project: this.emptyProject, editingItem: null, message: null }); }
     onCancel = (e) => { this.setState({ displayForm: false, message: null }); }
-    onChange = (e) => { this.setState({ project: {...this.state.project, [e.target.name]: e.target.value}, message: null })};
+    onChange = (e) => { 
+       let project = this.state.project;
+       project[e.target.name] = e.target.value;
+       this.setState({ project, message: null });
+    };
 
     onEdit = (item) => {
        let projectCopy = Object.assign({}, item);
