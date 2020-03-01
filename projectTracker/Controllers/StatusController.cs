@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using projectTracker.Models;
+using Microsoft.AspNetCore.Http;
+using System.Web;
 
 namespace projectTracker.Controllers
 {
@@ -61,9 +63,14 @@ namespace projectTracker.Controllers
             {
                 return NotFound("The element does not exist");
             }
-            statusManager.ProjectStatus.Remove(statusItem);
-            await statusManager.SaveChangesAsync();
-            return Ok();
+            try {
+                statusManager.ProjectStatus.Remove(statusItem);
+                await statusManager.SaveChangesAsync();
+                return Ok();
+            } 
+            catch {
+                return BadRequest("The Status you chose is currently being used in at least one Project and therefore cannot be deleted.");
+            }
         }
 
 

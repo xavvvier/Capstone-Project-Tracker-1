@@ -63,9 +63,14 @@ namespace projectTracker.Controllers
             {
                 return NotFound("The element does not exist");
             }
-            campusManager.Campus.Remove(campusItem);
-            await campusManager.SaveChangesAsync();
-            return Ok();
+            try {
+                campusManager.Campus.Remove(campusItem);
+                await campusManager.SaveChangesAsync();
+                return Ok();
+            } 
+            catch {
+                return BadRequest("The Campus you chose is currently being used in at least one Project and therefore cannot be deleted.");
+            }
         }
 
 
