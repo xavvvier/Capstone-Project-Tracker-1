@@ -33,5 +33,14 @@ namespace projectTracker.Controllers
             return View();
         }
 
+        public IActionResult Stages()
+        {
+            return View();
+        }
+
+        public IActionResult Checkpoints()
+        {
+            return View();
+        }
     }
 }

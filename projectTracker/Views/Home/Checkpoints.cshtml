@@ -1,0 +1,14 @@
+
+@{
+    ViewBag.menu = "Checkpoints";
+}
+<div class="ui two column stackable centered grid">
+    <div class="column">
+        <h1>Checkpoints</h1>
+        <div id="checkpoint-form"></div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/react/vendor.bundle.js" asp-append-version="true"></script>
+    <script src="~/js/react/checkpoint_form.bundle.js" asp-append-version="true"></script>
+}
