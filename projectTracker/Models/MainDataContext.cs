@@ -60,7 +60,7 @@ namespace projectTracker.Models
               .ToList<ProjectStatus>();
         }
 
-        //Get all Projects ordered by Name 
+        //Get all Projects ordered by Partner
         public List<Project> getProjects()
         {
            return Project.OrderBy(c => c.Partner)
@@ -68,6 +68,13 @@ namespace projectTracker.Models
               .Include(p => p.Campus)
               .Include(p => p.Status)
               .ToList<Project>();
+        }
+
+        //Get all Stages ordered by Title 
+        public List<Stage> getStages()
+        {
+           return Stage.OrderBy(c => c.Title)
+              .ToList<Stage>();
         }
 
         //Get all Categories order by Name including the links associated
