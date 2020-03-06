@@ -77,6 +77,13 @@ namespace projectTracker.Models
               .ToList<Stage>();
         }
 
+        //Get all Checkpoints ordered by Description 
+        public List<Checkpoint> getCheckpoints()
+        {
+           return Checkpoint.OrderBy(c => c.Description)
+              .ToList<Checkpoint>();
+        }
+
         //Get all Categories order by Name including the links associated
         // public IEnumerable<Category> AllCategoriesWithLinks()
         // {

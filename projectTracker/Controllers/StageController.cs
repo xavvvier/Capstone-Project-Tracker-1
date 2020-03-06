@@ -69,7 +69,7 @@ namespace projectTracker.Controllers
                 return Ok();
             } 
             catch {
-                return BadRequest("The Campus you chose is currently being used in at least one Project and therefore cannot be deleted.");
+                return BadRequest("The Stage you chose is currently being used in at least one Project and therefore cannot be deleted.");
             }
         }
 
