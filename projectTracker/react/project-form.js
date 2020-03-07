@@ -7,7 +7,21 @@ import axios from "axios";
 class ProjectForm extends React.Component {
     constructor(props) {
        super(props);
-       this.emptyProject = {
+       this.state = {
+          displayForm: false,
+          items: [],
+          project: this.emptyEntity(),
+          editingItem: null,
+          message: null,
+          statuses : [],
+          categories : [],
+          campuses : []
+       };
+       this.source = source;
+    }
+
+    emptyEntity() {
+       return {
           campusId: "",
           categoryId: "",
           partner: '',
@@ -18,17 +32,6 @@ class ProjectForm extends React.Component {
           value: '',
           statusId: ""
        };
-       this.state = {
-          displayForm: false,
-          items: [],
-          project: this.emptyProject,
-          editingItem: null,
-          message: null,
-          statuses : [],
-          categories : [],
-          campuses : []
-       };
-       this.source = source;
     }
 
     componentDidMount() {this.loadItems(); this.loadDropdown();}
@@ -69,7 +72,7 @@ class ProjectForm extends React.Component {
        }).then(res => {
           this.setState({
               displayForm: false,
-              project: this.emptyProject,
+              project: this.emptyEntity(),
               message: {bad: false, content: 'Item saved successfully'},
           });
           this.loadItems();
@@ -81,7 +84,7 @@ class ProjectForm extends React.Component {
        });
     }
 
-    onAddNew = (e) => { this.setState({ displayForm: true, project: this.emptyProject, editingItem: null, message: null }); }
+    onAddNew = (e) => { this.setState({ displayForm: true, project: this.emptyEntity(), editingItem: null, message: null }); }
     onCancel = (e) => { this.setState({ displayForm: false, message: null }); }
     onChange = (e) => { 
        let project = this.state.project;

@@ -7,15 +7,18 @@ import axios from "axios";
 class StageForm extends React.Component {
     constructor(props) {
         super(props);
-        this.emptyStage = { title: '', description: ''};
         this.state = {
             displayForm: false,
             items: [],
-            stage: this.emptyStage,
+            stage: this.emptyEntity(),
             editingItem: null,
             message: null
         };
         this.source = this.props.source;
+    }
+
+    emptyEntity() {
+        return { title: '', description: ''};
     }
 
     componentDidMount() { this.loadItems(); }
@@ -47,7 +50,7 @@ class StageForm extends React.Component {
        }).then(res => {
           this.setState({
               displayForm: false,
-              stage: this.emptyStage,
+              stage: this.emptyEntity(),
               message: {bad: false, content: 'Item saved successfully'},
           });
           this.loadItems();
@@ -59,7 +62,7 @@ class StageForm extends React.Component {
        });
     }
 
-    onAddNew = (e) => { this.setState({ displayForm: true, stage: this.emptyStage, editingItem: null, message: null }); }
+    onAddNew = (e) => { this.setState({ displayForm: true, stage: this.emptyEntity(), editingItem: null, message: null }); }
     onCancel = (e) => { this.setState({ displayForm: false, message: null }); }
     onChange = (e) => { 
        let stage = this.state.stage;
