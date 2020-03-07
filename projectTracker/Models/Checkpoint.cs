@@ -7,6 +7,7 @@ namespace projectTracker.Models
         public String Description { get; set; }
         public bool Completed { get; set; }
         public DateTime DueDate { get; set; }
-        public int StageId { get; set; }
+        public int StageId { get; set; }        
+        public Stage Stage { get; set; }
     }
 }

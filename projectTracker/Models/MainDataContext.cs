@@ -81,7 +81,8 @@ namespace projectTracker.Models
         public List<Checkpoint> getCheckpoints()
         {
            return Checkpoint.OrderBy(c => c.Description)
-              .ToList<Checkpoint>();
+               .Include(c => c.Stage)            
+               .ToList<Checkpoint>();
         }
 
         //Get all Categories order by Name including the links associated
