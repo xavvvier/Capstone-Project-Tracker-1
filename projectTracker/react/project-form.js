@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import ProjectTable from "./project-table";
 import DeleteModal from "./delete-modal";
 import axios from "axios";
+import DropDown from './dropdown';
 
 class ProjectForm extends React.Component {
     constructor(props) {
@@ -225,24 +226,6 @@ class ProjectForm extends React.Component {
     }
 }
 
-
-class DropDown extends React.Component{
-    render() {
-        var {data, value} = this.props;
-        return (
-        <select required className="ui search dropdown" 
-           onChange={this.props.onChange}
-           name={this.props.name}
-           value={value}>
-            <option>{this.props.placeholder}</option>
-            {
-                data.map(function (item) {
-                    return <option key={item.id} value={item.id }>{item.name}</option>;
-                })
-            }
-        </select>);
-    }
-}
 
 const source = {
    api: "/api/project",
