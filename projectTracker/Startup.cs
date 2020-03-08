@@ -40,7 +40,10 @@ namespace projectTracker
 
 
             //Set up mvc
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(
+                options => options.SerializerSettings.ReferenceLoopHandling =            
+                Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             
             //Set up EF Core
             services.AddDbContext<MainDataContext>(options => 
