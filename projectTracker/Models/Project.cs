@@ -20,6 +20,6 @@ namespace projectTracker.Models
         public Category Category { get; set; }
         public Campus Campus { get; set; }
         public ICollection<Note> Notes { get; set; }
-        public ICollection<ProjectStage> ProjectStages { get; set; }
+        public ICollection<ProjectCheckpoint> Checkpoints { get; set; }
     }
 }

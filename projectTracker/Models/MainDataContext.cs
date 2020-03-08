@@ -16,20 +16,18 @@ namespace projectTracker.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<ProjectStage>()
-                .HasKey(ps => new { ps.ProjectId, ps.StageId });
-            modelBuilder.Entity<ProjectStage>()
-                .HasOne(ps => ps.Project)
-                .WithMany(b => b.ProjectStages)
+            modelBuilder.Entity<ProjectCheckpoint>()
+                .HasKey(pc => new { pc.ProjectId, pc.CheckpointId });
+            modelBuilder.Entity<ProjectCheckpoint>()
+                .HasOne(pc => pc.Project)
+                .WithMany(p => p.Checkpoints)
                 .HasForeignKey(p => p.ProjectId);
-            modelBuilder.Entity<ProjectStage>()
-                .HasOne(ps => ps.Stage)
-                .WithMany(c => c.ProjectStages)
-                .HasForeignKey(s => s.StageId);
+            // modelBuilder.Entity<ProjectCheckpoint>()
+            //     .HasOne(pc => pc.Checkpoint)
+            //     .WithMany(c => c.Checkpoints)
+            //     .HasForeignKey(s => s.CheckpointId);
         }
 
-        // public DbSet<Link> Link {get; set;}
-        // public DbSet<Category> Category {get; set;}
         public DbSet<User> User { get; set; }
         public DbSet<Campus> Campus { get; set; }
         public DbSet<Category> Category { get; set; }
@@ -85,32 +83,11 @@ namespace projectTracker.Models
                .ToList<Checkpoint>();
         }
 
-        //Get all Categories order by Name including the links associated
-        // public IEnumerable<Category> AllCategoriesWithLinks()
-        // {
-        //    return Category.OrderBy(c => c.Name)
-        //       .Include(c => c.Links)
-        //       .ToList<Category>();
-        // }
-
-        //Get all Categories order by Name 
-        // public IEnumerable<Category> AllCategories()
-        // {
-        //    return Category.OrderBy(c => c.Name)
-        //       .ToList<Category>();
-        // }
-
-
         //Get a Category by Id
         // public Category CategoryById(int id)
         // {
         //    return Category.FirstOrDefault(c => c.Id == id);
         // }
         //
-        // //Get a Link by Id
-        // public Link LinkById(int id)
-        // {
-        //    return Link.FirstOrDefault(c => c.Id == id);
-        // }
     }
 }
