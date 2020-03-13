@@ -7,5 +7,6 @@ namespace projectTracker.Models
         public String Content { get; set; }
         public DateTime Timestamp { get; set; }
         public int ProjectId { get; set; }
+        public int Minutes { get; set; }
     }
 }

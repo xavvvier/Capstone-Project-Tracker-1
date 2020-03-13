@@ -68,6 +68,21 @@ namespace projectTracker.Models
               .ToList<Project>();
         }
 
+        //Get Project by Id
+        public Project getProject(int id)
+        {
+           var project = Project.Where(c => c.Id == id)
+              .Include(p => p.Notes)
+              .Include(p => p.Checkpoints)
+              .ThenInclude(pc => pc.Checkpoint)
+              .ThenInclude(c => c.Stage)
+              .First();
+            project.Checkpoints = project.Checkpoints.OrderBy(c => c.Checkpoint.Stage.Description)
+                                    .ThenBy(c => c.Checkpoint.Description)
+                                    .ToList();
+            return project;
+        }
+
         //Get all Stages ordered by Title 
         public List<Stage> getStages()
         {
@@ -83,6 +98,17 @@ namespace projectTracker.Models
                .ToList<Checkpoint>();
         }
 
+         public void updateProjectTime(int id) {
+            int TotalTime = Note.Where(c => c.ProjectId == id)
+            .Sum(c => c.Minutes);
+
+            Project myProject = new Project();
+            myProject.Id = id;
+            Project.Attach(myProject);
+            myProject.TotalTime = TotalTime;
+            SaveChanges();
+
+         }
         //Get a Category by Id
         // public Category CategoryById(int id)
         // {

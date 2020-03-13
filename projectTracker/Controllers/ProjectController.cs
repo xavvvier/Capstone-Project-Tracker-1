@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using projectTracker.Models;
+using System.Linq;
 
 namespace projectTracker.Controllers
 {
@@ -31,7 +32,13 @@ namespace projectTracker.Controllers
             try
             {
                 projectManager.Add(project);
+                var checkpoints = projectManager.Checkpoint.ToList<Checkpoint>();
+                var listOfProjectCheckPoint  = checkpoints.Select(c => new ProjectCheckpoint{
+                    Checkpoint = c,
+                }).ToList();
+                project.Checkpoints = listOfProjectCheckPoint;
                 await projectManager.SaveChangesAsync();
+
                 return Ok(project);
             }
             catch (Exception ex)
@@ -66,6 +73,11 @@ namespace projectTracker.Controllers
             projectManager.Project.Remove(projectItem);
             await projectManager.SaveChangesAsync();
             return Ok();
+        }
+
+        [HttpGet("{id}")]
+        public Project Project(int id) {
+            return projectManager.getProject(id);
         }
 
 

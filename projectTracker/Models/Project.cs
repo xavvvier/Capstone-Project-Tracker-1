@@ -21,5 +21,6 @@ namespace projectTracker.Models
         public Campus Campus { get; set; }
         public ICollection<Note> Notes { get; set; }
         public ICollection<ProjectCheckpoint> Checkpoints { get; set; }
+        public int TotalTime { get; set; }
     }
 }
