@@ -10,12 +10,16 @@
 </head>
 <body>
     <div class="ui blue inverted menu">
+        <div class="header item">
+            @* <img class="ui mini image" src="C:/Users/Asus/Desktop/Capstone-Project-Tracker/projectTracker/logos/logo1-small.png"> *@
+            <strong style="font-size: 1.5em;">Project Tracker <i style="font-size: 1.5em;" class="tasks icon"></i></strong>
+        </div>
         <a class="item @(ViewBag.menu == "Dashboard"?"active":"")"" href="@Url.Action("Index", "Home")">Dashboard</a>
         <a class="item @(ViewBag.menu == "Projects"?"active":"")" href="@Url.Action("Projects", "Home")">Projects</a>
         <div class="ui dropdown item">
             Settings
-            <i class="dropdown icon"></i>
-            <div class="menu">
+            <i class="blue dropdown icon"></i>
+            <div class="blue menu">
                 <a class="item @(ViewBag.menu == "Stages"?"active":"")" href="@Url.Action("Stages", "Home")">Stages</a>
                 <a class="item @(ViewBag.menu == "Checkpoints"?"active":"")" href="@Url.Action("Checkpoints", "Home")">Checkpoints</a>
                 <a class="item @(ViewBag.menu == "Campus"?"active":"")" href="@Url.Action("Campus", "Home")">Campus</a>
