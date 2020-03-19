@@ -37,6 +37,13 @@ class ProjectTable extends React.Component {
                         <td data-label="Value">{item.value}</td>
                         <td data-label="Status">{item.status.name}</td>
                         <td data-label="Actions" className="right collapsing aligned">
+                            <button className="ui vertical secondary basic animated mini button"
+                                onClick={this.props.onView.bind(this, item)}>
+                                <span className="hidden content">View</span>
+                                <div className="visible content">
+                                    <i className="icon list alternate outline"></i>
+                                </div>
+                            </button>
                             <button className="ui vertical primary basic animated mini button"
                                 onClick={this.props.onEdit.bind(this, item)}>
                                 <span className="hidden content">Edit</span>

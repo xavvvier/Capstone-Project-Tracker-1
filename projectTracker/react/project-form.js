@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ProjectTable from "./project-table";
 import DeleteModal from "./delete-modal";
+import ProjectDetailModal from "./project-detail-modal";
 import axios from "axios";
 import DropDown from './dropdown';
 
@@ -16,7 +17,10 @@ class ProjectForm extends React.Component {
           message: null,
           statuses : [],
           categories : [],
-          campuses : []
+          campuses : [],
+          projectView: {},
+          checkpoints: [],
+          notes: []
        };
        this.source = source;
     }
@@ -31,7 +35,7 @@ class ProjectForm extends React.Component {
           startDate: '',
           endDate: '',
           value: '',
-          statusId: ""
+          statusId: '',
        };
     }
 
@@ -98,6 +102,26 @@ class ProjectForm extends React.Component {
        projectCopy.startDate = projectCopy.startDate.substr(0,10);
        projectCopy.endDate = projectCopy.endDate.substr(0,10);
        this.setState({ displayForm: true, project: projectCopy, editingItem: item, message: null});
+    };
+
+    onView = (item) => {
+       let projectCopy = Object.assign({}, item);
+       projectCopy.startDate = projectCopy.startDate.substr(0,10);
+       projectCopy.endDate = projectCopy.endDate.substr(0,10);
+       axios.get(this.source.api + "/" + item.id).then(res => {
+          const details = res.data;
+          this.setState({
+             projectView: projectCopy,
+             checkpoints: details.checkpoints,
+             notes: details.notes,
+          });
+          $('.ui.modal.detail').modal('show');
+       }).catch(err => {
+          this.setState({
+             loading: false,
+             message: {bad: true, content: err.response.data}
+          });
+       });
     };
 
     onDelete = (item) => {
@@ -220,8 +244,13 @@ class ProjectForm extends React.Component {
             }
             <ProjectTable items={this.state.items}
                onEdit={this.onEdit}
+               onView={this.onView}
                onDelete={this.onDelete}/>
             <DeleteModal onYes={this.onConfirmDelete} title="project"/>
+            <ProjectDetailModal 
+               project={this.state.projectView} 
+               notes={this.state.notes} 
+               checkpoints={this.state.checkpoints}/>
         </div>;
     }
 }

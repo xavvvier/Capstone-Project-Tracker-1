@@ -44,6 +44,15 @@ body > .grid {
     -webkit-animation: scale-in-ver-top .2s cubic-bezier(.25,.46,.45,.94) both;
     animation: scale-in-ver-top .2s cubic-bezier(.25,.46,.45,.94) both
 }
+.detail-field p
+{
+   margin: 2px;
+   color: gray;
+}
+.detail-field h4
+{
+   margin: 2px;
+}
 
 
 /* ----------------------------------------------
