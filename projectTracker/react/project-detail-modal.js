@@ -1,5 +1,7 @@
 import React from 'react';
 
+const DATE_FORMAT = "dddd, MMMM Do YYYY, h:mm:ss a";
+
 class ProjectDetailModal extends React.Component {
    render() {
       const {
@@ -18,7 +20,7 @@ class ProjectDetailModal extends React.Component {
       return (<div className="ui modal detail">
          <i className="close icon"></i>
          <div className="header">
-           Projects
+           Project Details
          </div>
          <div className="content">
             <div className="ui three column doubling stackable grid">
@@ -63,16 +65,40 @@ class ProjectDetailModal extends React.Component {
                      <h4>{totalTime}</h4>
                  </div>
             </div>
-            <div>
-               <h4>Checkpoints</h4>
-               {checkpoints.map(c => 
-                  <div key={c.checkpointId}>
-                     <label>
-                        <input type="checkbox" disabled checked={c.completed}/>
-                        {c.checkpoint.description}
-                     </label>
-                  </div>
-               )}
+            <div className="ui two column doubling stackable grid">
+               <section className="column">
+                  <h4>Checkpoints</h4>
+                  {checkpoints.map(c => 
+                     <div key={c.checkpointId}>
+                        <label>
+                           <i className={"icon circle outline " + (c.completed?"check":"")}></i>
+                           <span className="grayed">{c.checkpoint.stage.title} - </span>
+                           {c.checkpoint.description}
+                        </label>
+                     </div>
+                  )}
+               </section>
+               <section className="column">
+                  <h4>Notes</h4>
+                  {notes.map(c => 
+                     <div key={c.id} className="note">
+                        <div>
+                           <i className="icon calendar alternate outline"></i>
+                           <span className="grayed">{moment(c.timestamp).format(DATE_FORMAT)} </span>
+                        </div>
+                        <div>
+                           <i className="icon clock outline"></i>
+                           <span className="grayed">
+                              Time spent: {c.minutes} minutes.
+                           </span>
+                        </div>
+                        <div>
+                           {c.content}
+                        </div>
+                     </div>
+                  )}
+                  {notes.length==0?"No notes found":""}
+               </section>
             </div>
          </div>
          <div className="actions">
