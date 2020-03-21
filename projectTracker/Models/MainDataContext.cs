@@ -77,10 +77,32 @@ namespace projectTracker.Models
               .ThenInclude(pc => pc.Checkpoint)
               .ThenInclude(c => c.Stage)
               .First();
-            project.Checkpoints = project.Checkpoints.OrderBy(c => c.Checkpoint.Stage.Description)
+            project.Checkpoints = project.Checkpoints.OrderByDescending(c => c.Checkpoint.Stage.Description)
                                     .ThenBy(c => c.Checkpoint.Description)
                                     .ToList();
             return project;
+        }
+
+        //Get Projects filtered by CampusId
+        public IEnumerable<Project> getFilteredProjects(int id)
+        {
+           var projects = Project.Where(p => p.CampusId == id && p.Status.Name != "Close-out") 
+               // .Where (p => p.Status != "Close-out")
+               .Include(p => p.Notes)
+               .Include(p => p.Category)
+               .Include(p => p.Status)
+               .Include(p => p.Checkpoints)
+               .ThenInclude(pc => pc.Checkpoint)
+               .ThenInclude(c => c.Stage)
+               .ToList();
+               foreach (var project in projects)
+               {
+                   
+                  project.Checkpoints = project.Checkpoints.OrderByDescending(c => c.Checkpoint.Stage.Description)
+                                    .ThenBy(c => c.Checkpoint.Description).ToList();
+                  project.Notes = project.Notes.OrderByDescending(n => n.Timestamp).ToList();
+               }
+            return projects;
         }
 
         //Get all Stages ordered by Title 

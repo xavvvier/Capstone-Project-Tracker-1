@@ -10,6 +10,6 @@ namespace projectTracker.Models
         public int CheckpointId { get; set; }
         public Checkpoint Checkpoint { get; set; }
         public bool Completed { get; set; }
-        public DateTime DueDate { get; set; }
+        public DateTime? DueDate { get; set; }
     }
 }

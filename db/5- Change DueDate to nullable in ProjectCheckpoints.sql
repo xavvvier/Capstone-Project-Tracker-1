@@ -1,0 +1,1 @@
+ALTER TABLE public."ProjectCheckpoint" ALTER COLUMN "DueDate" DROP NOT NULL;
