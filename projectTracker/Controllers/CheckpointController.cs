@@ -52,8 +52,6 @@ namespace projectTracker.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            //TODO: insert new checkpoint using MainDataContext
-            // return BadRequest("Not implemented yet");
         }
 
         [HttpDelete("{id}")]

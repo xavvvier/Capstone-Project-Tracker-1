@@ -80,6 +80,11 @@ namespace projectTracker.Controllers
             return projectManager.getProject(id);
         }
 
+        [HttpGet("bycampus/{id}")]
+        public IEnumerable<Project> FilterProjects(int id) {
+            return projectManager.getFilteredProjects(id);
+        }
+
 
     }
 }

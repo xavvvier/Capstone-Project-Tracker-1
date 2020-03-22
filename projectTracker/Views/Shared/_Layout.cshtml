@@ -11,8 +11,7 @@
 <body>
     <div class="ui blue inverted menu">
         <div class="header item">
-            @* <img class="ui mini image" src="C:/Users/Asus/Desktop/Capstone-Project-Tracker/projectTracker/logos/logo1-small.png"> *@
-            <strong style="font-size: 1.5em;">Project Tracker <i style="font-size: 1.5em;" class="tasks icon"></i></strong>
+            <strong>Project Tracker <i style="font-size: 1.2em;" class="tasks icon"></i></strong>
         </div>
         <a class="item @(ViewBag.menu == "Dashboard"?"active":"")"" href="@Url.Action("Index", "Home")">Dashboard</a>
         <a class="item @(ViewBag.menu == "Projects"?"active":"")" href="@Url.Action("Projects", "Home")">Projects</a>
