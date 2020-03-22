@@ -57,12 +57,61 @@ body > .grid {
    color: gray;
    margin-right: .3em;
    margin-left: .3em;
+   font-size: .8rem;
 }
 .modal.detail section{
    margin-top: 20px;
 }
-.modal.detail .note{
-   margin-top: 20px;
+.note{
+   margin-bottom: 20px;
+}
+.ui.container.dashboard {
+   width: 900px;
+}
+.dashboard .buttons{
+   margin-bottom: 1rem;
+}
+.dashboard .content{
+   width: 100%;
+}
+.ui.grid .dashboard .column {
+   padding: 2rem 0;
+}
+.dashboard .project .title{
+   font-size: 1.3rem;
+   font-weight: 700; 
+}
+.dashboard .project .section{
+   font-size: 0.95rem;
+   font-weight: bolder;
+   color: gray;
+   margin-bottom: .5rem;
+}
+.dashboard .project .due-date{
+   float: right;
+   cursor: pointer;
+}
+.dashboard .project .check{
+   cursor: pointer;
+}
+.dashboard .progress{
+   margin: .5rem 0;
+}
+.dashboard .project .time,
+.dashboard .section .button{
+   float: right;
+}
+.dashboard .ui.divider {
+   margin-bottom: 4rem;
+}
+.dashboard .note .trash {
+   display: none;
+}
+.dashboard .note:hover .trash {
+   display: inline-block;
+   color: #d01919;
+   cursor: pointer;
+   margin-left: .5rem;
 }
 
 /* ----------------------------------------------

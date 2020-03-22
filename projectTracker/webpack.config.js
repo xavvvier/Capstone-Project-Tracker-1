@@ -7,6 +7,7 @@ module.exports = {
     project_form: './react/project-form.js',
     stage_form: './react/stage-form.js',
     checkpoint_form: './react/checkpoint-form.js',
+    dashboard: './react/dashboard.js',
   },
   output: {
     filename: '[name].bundle.js',

@@ -1,3 +1,14 @@
 ﻿@{
-    ViewBag.menu = "Dashboard";
+ViewBag.menu = "Dashboard";
+}
+<div class="dashboard ui container">
+   <h1>Dashboard</h1>
+   <div id="dashboard">
+   </div>
+   <div class="ui middle center aligned grid">
+   </div>
+</div>
+@section Scripts{
+<script src="~/js/react/vendor.bundle.js" asp-append-version="true"></script>
+<script src="~/js/react/dashboard.bundle.js" asp-append-version="true"></script>
 }
