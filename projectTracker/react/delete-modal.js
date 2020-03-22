@@ -3,7 +3,7 @@ import React from 'react';
 export default class DeleteModal extends React.Component {
    render() {
       return (
-         <div className="ui mini test modal transition">
+         <div className="ui mini delete modal transition">
             <div className="header"> Delete {this.props.title} </div>
             <div className="content">
                   <p>
