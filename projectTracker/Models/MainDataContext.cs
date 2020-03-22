@@ -120,7 +120,7 @@ namespace projectTracker.Models
                .ToList<Checkpoint>();
         }
 
-         public void updateProjectTime(int id) {
+         public int updateProjectTime(int id) {
             int TotalTime = Note.Where(c => c.ProjectId == id)
             .Sum(c => c.Minutes);
 
@@ -129,7 +129,13 @@ namespace projectTracker.Models
             Project.Attach(myProject);
             myProject.TotalTime = TotalTime;
             SaveChanges();
+            return TotalTime;
+         }
 
+         public List<Note> getNotes(int id) {
+            return Note.Where(n => n.ProjectId == id)
+                       .OrderByDescending(n => n.Timestamp)
+                       .ToList();
          }
         //Get a Category by Id
         // public Category CategoryById(int id)
