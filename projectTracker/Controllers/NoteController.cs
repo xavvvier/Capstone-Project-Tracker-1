@@ -27,8 +27,10 @@ namespace projectTracker.Controllers
             {
                 noteManager.Add(note);
                 await noteManager.SaveChangesAsync();
-                noteManager.updateProjectTime(note.ProjectId);
-                return Ok(note);
+                int totalTime = noteManager.updateProjectTime(note.ProjectId);
+                var notes = noteManager.getNotes(note.ProjectId);
+                return Ok(new {totalTime,notes});
+                // return Ok(note);
             }
             catch (Exception ex)
             {
@@ -46,8 +48,9 @@ namespace projectTracker.Controllers
             try {
                 noteManager.Note.Remove(noteItem);
                 await noteManager.SaveChangesAsync();
-                noteManager.updateProjectTime(noteItem.ProjectId);
-                return Ok();
+                int totalTime = noteManager.updateProjectTime(noteItem.ProjectId);
+                var notes = noteManager.getNotes(noteItem.ProjectId);
+                return Ok(new {totalTime,notes});
             } 
             catch {
                 return BadRequest("The Note you chose is currently being used in at least one Project and therefore cannot be deleted.");
