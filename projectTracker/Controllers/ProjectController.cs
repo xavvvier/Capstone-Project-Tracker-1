@@ -85,6 +85,19 @@ namespace projectTracker.Controllers
             return projectManager.getFilteredProjects(id);
         }
 
+        [HttpPut("markcheckpoint")]
+        public async Task<IActionResult> Update(ProjectCheckpoint cp) {
+            try
+            {
+                projectManager.Update(cp);
+                await projectManager.SaveChangesAsync();
+                return Ok(cp);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
     }
 }
