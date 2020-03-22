@@ -1,1 +1,194 @@
-!function(e){function t(t){for(var a,i,l=t[0],c=t[1],s=t[2],m=0,f=[];m<l.length;m++)i=l[m],Object.prototype.hasOwnProperty.call(o,i)&&o[i]&&f.push(o[i][0]),o[i]=0;for(a in c)Object.prototype.hasOwnProperty.call(c,a)&&(e[a]=c[a]);for(u&&u(t);f.length;)f.shift()();return r.push.apply(r,s||[]),n()}function n(){for(var e,t=0;t<r.length;t++){for(var n=r[t],a=!0,l=1;l<n.length;l++){var c=n[l];0!==o[c]&&(a=!1)}a&&(r.splice(t--,1),e=i(i.s=n[0]))}return e}var a={},o={2:0},r=[];function i(t){if(a[t])return a[t].exports;var n=a[t]={i:t,l:!1,exports:{}};return e[t].call(n.exports,n,n.exports,i),n.l=!0,n.exports}i.m=e,i.c=a,i.d=function(e,t,n){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},i.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(i.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var a in e)i.d(n,a,function(t){return e[t]}.bind(null,a));return n},i.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(t,"a",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p="";var l=window.webpackJsonp=window.webpackJsonp||[],c=l.push.bind(l);l.push=t,l=l.slice();for(var s=0;s<l.length;s++)t(l[s]);var u=c;r.push([37,0]),n()}({3:function(e,t,n){"use strict";n.d(t,"a",(function(){return m}));var a=n(0),o=n.n(a);function r(e){return(r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function l(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}function c(e,t){return!t||"object"!==r(t)&&"function"!=typeof t?function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(e):t}function s(e){return(s=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function u(e,t){return(u=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}var m=function(e){function t(){return i(this,t),c(this,s(t).apply(this,arguments))}var n,a,r;return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&u(e,t)}(t,e),n=t,(a=[{key:"render",value:function(){return o.a.createElement("div",{className:"ui mini test modal transition"},o.a.createElement("div",{className:"header"}," Delete ",this.props.title," "),o.a.createElement("div",{className:"content"},o.a.createElement("p",null,"Are you sure you want to delete  ",this.props.content?o.a.createElement("span",{className:"ui label"},this.props.content):o.a.createElement("span",null,"this ",this.props.title),"?")),o.a.createElement("div",{className:"actions"},o.a.createElement("div",{className:"ui basic positive button",tabIndex:"0"},"No"),o.a.createElement("div",{className:"ui negative right labeled icon button",onClick:this.props.onYes,tabIndex:"0"},"Yes",o.a.createElement("i",{className:"trash icon"}))))}}])&&l(n.prototype,a),r&&l(n,r),t}(o.a.Component)},37:function(e,t,n){"use strict";n.r(t);var a=n(0),o=n.n(a),r=n(4),i=n.n(r);function l(e){return(l="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function c(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function s(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}function u(e,t){return!t||"object"!==l(t)&&"function"!=typeof t?function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(e):t}function m(e){return(m=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function f(e,t){return(f=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}var p=function(e){function t(){return c(this,t),u(this,m(t).apply(this,arguments))}var n,a,r;return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&f(e,t)}(t,e),n=t,(a=[{key:"render",value:function(){var e=this;return o.a.createElement("table",{className:"ui celled table"},o.a.createElement("thead",null,o.a.createElement("tr",null,o.a.createElement("th",null,"Name"),o.a.createElement("th",null,"Actions"))),o.a.createElement("tbody",null,this.props.items.map((function(t){return o.a.createElement("tr",{key:t.id},o.a.createElement("td",{"data-label":"Name"},t.name),o.a.createElement("td",{"data-label":"Actions",className:"right collapsing aligned"},o.a.createElement("button",{className:"ui vertical primary basic animated mini button",onClick:e.props.onEdit.bind(e,t)},o.a.createElement("span",{className:"hidden content"},"Edit"),o.a.createElement("div",{className:"visible content"},o.a.createElement("i",{className:"pencil alternate icon"}))),o.a.createElement("button",{className:"ui vertical negative basic animated mini button",onClick:e.props.onDelete.bind(e,t)},o.a.createElement("div",{className:"hidden content"},"Delete"),o.a.createElement("div",{className:"visible content"},o.a.createElement("i",{className:"trash alternate icon"})))))}))))}}])&&s(n.prototype,a),r&&s(n,r),t}(o.a.Component),d=n(3),b=n(1),y=n.n(b);function h(e){return(h="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function v(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function g(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}function E(e,t){return!t||"object"!==h(t)&&"function"!=typeof t?function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(e):t}function O(e){return(O=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function w(e,t){return(w=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}var S=function(e){function t(e){var n;return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),(n=E(this,O(t).call(this,e))).loadItems=function(){n.setState({loading:!0}),y.a.get(n.source.api).then((function(e){n.setState({loading:!1,items:e.data})}))},n.onSubmit=function(e){e.preventDefault(),n.setState({loading:!0});var t=null==n.state.editingItem?"post":"put",a=null!==n.state.editingItem?n.state.editingItem.id:0;y()({method:t,url:n.source.api,data:{id:a,name:n.state.name}}).then((function(e){n.setState({displayForm:!1,name:"",message:{bad:!1,content:"Item saved successfully"}}),n.loadItems()})).catch((function(e){n.setState({loading:!1,message:{bad:!0,content:e.response.data}})}))},n.onAddNew=function(e){n.setState({displayForm:!0,name:"",editingItem:null,message:null})},n.onCancel=function(e){n.setState({displayForm:!1,message:null})},n.onChange=function(e){var t;n.setState((v(t={},e.target.name,e.target.value),v(t,"message",null),t))},n.onEdit=function(e){n.setState({displayForm:!0,name:e.name,editingItem:e,message:null})},n.onDelete=function(e){n.onCancel(),n.deleteItem=e,$(".mini.modal").modal("show")},n.onConfirmDelete=function(){n.setState({loading:!0}),y.a.delete(n.source.api+"/"+n.deleteItem.id).then((function(e){return n.loadItems()})).catch((function(e){n.setState({loading:!1,message:{bad:!0,content:e.response.data}})}))},n.state={displayForm:!1,items:[],name:"",editingItem:null,message:null},n.source=N[n.props.source],n}var n,a,r;return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&w(e,t)}(t,e),n=t,(a=[{key:"componentDidMount",value:function(){this.loadItems()}},{key:"render",value:function(){var e=this.state.displayForm;return o.a.createElement("div",{className:"name-form-container"},o.a.createElement("button",{onClick:this.onAddNew,className:"ui positive basic button "+(e?"hid":"")},o.a.createElement("i",{className:"plus icon"})," Add new"),o.a.createElement("div",{className:this.state.loading?"ui active centered inline loader":""}),o.a.createElement("form",{className:e?"ui form scale-in-ver-top":"ui form hid",method:"post",onSubmit:this.onSubmit},o.a.createElement("div",{className:"field"},o.a.createElement("label",null,"Name"),o.a.createElement("input",{type:"text",name:"name",value:this.state.name,onChange:this.onChange,maxLength:"200",placeholder:this.source.name})),o.a.createElement("button",{className:"ui positive basic button "+(this.state.loading?"disabled":""),type:"submit"},o.a.createElement("i",{className:"save icon"}),"Save"),o.a.createElement("button",{className:"ui secondary basic button",type:"button",onClick:this.onCancel},o.a.createElement("i",{className:"close icon"}),"Cancel")),null!==this.state.message?o.a.createElement("div",{className:"ui message transition "+(this.state.message.bad?"negative":"positive")},o.a.createElement("div",{className:"header"},this.state.message.title),o.a.createElement("p",null,this.state.message.content)):o.a.createElement("div",null),o.a.createElement(p,{items:this.state.items,onEdit:this.onEdit,onDelete:this.onDelete}),o.a.createElement(d.a,{onYes:this.onConfirmDelete,title:this.source.name.toLowerCase(),content:this.deleteItem&&this.deleteItem.name}))}}])&&g(n.prototype,a),r&&g(n,r),t}(o.a.Component),N={campus:{name:"Campus",api:"/api/campus"},status:{name:"Status",api:"/api/status"},category:{name:"Category",api:"/api/category"}},j=(t.default=S,document.querySelector("#name-form")),_=j.dataset.source;i.a.render(o.a.createElement(S,{source:_}),j)}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/ 		var executeModules = data[2];
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 		// add entry modules from loaded chunk to deferred list
+/******/ 		deferredModules.push.apply(deferredModules, executeModules || []);
+/******/
+/******/ 		// run deferred modules when all chunks ready
+/******/ 		return checkDeferredModules();
+/******/ 	};
+/******/ 	function checkDeferredModules() {
+/******/ 		var result;
+/******/ 		for(var i = 0; i < deferredModules.length; i++) {
+/******/ 			var deferredModule = deferredModules[i];
+/******/ 			var fulfilled = true;
+/******/ 			for(var j = 1; j < deferredModule.length; j++) {
+/******/ 				var depId = deferredModule[j];
+/******/ 				if(installedChunks[depId] !== 0) fulfilled = false;
+/******/ 			}
+/******/ 			if(fulfilled) {
+/******/ 				deferredModules.splice(i--, 1);
+/******/ 				result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+/******/ 			}
+/******/ 		}
+/******/
+/******/ 		return result;
+/******/ 	}
+/******/
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		"name_form": 0
+/******/ 	};
+/******/
+/******/ 	var deferredModules = [];
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
+/******/
+/******/
+/******/ 	// add entry module to deferred list
+/******/ 	deferredModules.push(["./react/name-form.js","vendor"]);
+/******/ 	// run deferred modules when ready
+/******/ 	return checkDeferredModules();
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./react/delete-modal.js":
+/*!*******************************!*\
+  !*** ./react/delete-modal.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return DeleteModal; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } return _assertThisInitialized(self); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\n\n\nvar DeleteModal =\n/*#__PURE__*/\nfunction (_React$Component) {\n  _inherits(DeleteModal, _React$Component);\n\n  function DeleteModal() {\n    _classCallCheck(this, DeleteModal);\n\n    return _possibleConstructorReturn(this, _getPrototypeOf(DeleteModal).apply(this, arguments));\n  }\n\n  _createClass(DeleteModal, [{\n    key: \"render\",\n    value: function render() {\n      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n        className: \"ui mini test modal transition\"\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n        className: \"header\"\n      }, \" Delete \", this.props.title, \" \"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n        className: \"content\"\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"p\", null, \"Are you sure you want to delete \\xA0\", this.props.content ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"span\", {\n        className: \"ui label\"\n      }, this.props.content) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"span\", null, \"this \", this.props.title), \"?\")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n        className: \"actions\"\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n        className: \"ui basic positive button\",\n        tabIndex: \"0\"\n      }, \"No\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n        className: \"ui negative right labeled icon button\",\n        onClick: this.props.onYes,\n        tabIndex: \"0\"\n      }, \"Yes\", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"i\", {\n        className: \"trash icon\"\n      }))));\n    }\n  }]);\n\n  return DeleteModal;\n}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);\n\n\n\n//# sourceURL=webpack:///./react/delete-modal.js?");
+
+/***/ }),
+
+/***/ "./react/name-form.js":
+/*!****************************!*\
+  !*** ./react/name-form.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _name_table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./name-table */ \"./react/name-table.js\");\n/* harmony import */ var _delete_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./delete-modal */ \"./react/delete-modal.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } return _assertThisInitialized(self); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\n\n\n\n\n\n\nvar NameForm =\n/*#__PURE__*/\nfunction (_React$Component) {\n  _inherits(NameForm, _React$Component);\n\n  function NameForm(props) {\n    var _this;\n\n    _classCallCheck(this, NameForm);\n\n    _this = _possibleConstructorReturn(this, _getPrototypeOf(NameForm).call(this, props));\n\n    _this.loadItems = function () {\n      _this.setState({\n        loading: true\n      });\n\n      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get(_this.source.api).then(function (res) {\n        _this.setState({\n          loading: false,\n          items: res.data\n        });\n      });\n    };\n\n    _this.onSubmit = function (e) {\n      e.preventDefault();\n\n      _this.setState({\n        loading: true\n      }); //Change the http method depending if the operation is edit or save\n\n\n      var method = _this.state.editingItem == null ? 'post' : 'put';\n      var id = _this.state.editingItem !== null ? _this.state.editingItem.id : 0;\n      axios__WEBPACK_IMPORTED_MODULE_4___default()({\n        method: method,\n        url: _this.source.api,\n        data: {\n          id: id,\n          name: _this.state.name\n        }\n      }).then(function (res) {\n        _this.setState({\n          displayForm: false,\n          name: '',\n          message: {\n            bad: false,\n            content: 'Item saved successfully'\n          }\n        });\n\n        _this.loadItems();\n      })[\"catch\"](function (err) {\n        _this.setState({\n          loading: false,\n          message: {\n            bad: true,\n            content: err.response.data\n          }\n        });\n      });\n    };\n\n    _this.onAddNew = function (e) {\n      _this.setState({\n        displayForm: true,\n        name: '',\n        editingItem: null,\n        message: null\n      });\n    };\n\n    _this.onCancel = function (e) {\n      _this.setState({\n        displayForm: false,\n        message: null\n      });\n    };\n\n    _this.onChange = function (e) {\n      var _this$setState;\n\n      _this.setState((_this$setState = {}, _defineProperty(_this$setState, e.target.name, e.target.value), _defineProperty(_this$setState, \"message\", null), _this$setState));\n    };\n\n    _this.onEdit = function (item) {\n      _this.setState({\n        displayForm: true,\n        name: item.name,\n        editingItem: item,\n        message: null\n      });\n    };\n\n    _this.onDelete = function (item) {\n      _this.onCancel();\n\n      _this.deleteItem = item;\n      $('.mini.modal').modal('show');\n    };\n\n    _this.onConfirmDelete = function () {\n      _this.setState({\n        loading: true\n      });\n\n      axios__WEBPACK_IMPORTED_MODULE_4___default.a[\"delete\"](_this.source.api + '/' + _this.deleteItem.id).then(function (res) {\n        return _this.loadItems();\n      })[\"catch\"](function (err) {\n        _this.setState({\n          loading: false,\n          message: {\n            bad: true,\n            content: err.response.data\n          }\n        });\n      });\n    };\n\n    _this.state = {\n      displayForm: false,\n      items: [],\n      name: '',\n      editingItem: null,\n      message: null\n    };\n    _this.source = sources[_this.props.source];\n    return _this;\n  }\n\n  _createClass(NameForm, [{\n    key: \"componentDidMount\",\n    value: function componentDidMount() {\n      this.loadItems();\n    }\n  }, {\n    key: \"render\",\n    value: function render() {\n      var showForm = this.state.displayForm;\n      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n        className: \"name-form-container\"\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", {\n        onClick: this.onAddNew,\n        className: \"ui positive basic button \" + (showForm ? \"hid\" : \"\")\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"i\", {\n        className: \"plus icon\"\n      }), \" Add new\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n        className: this.state.loading ? \"ui active centered inline loader\" : \"\"\n      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"form\", {\n        className: showForm ? \"ui form scale-in-ver-top\" : \"ui form hid\",\n        method: \"post\",\n        onSubmit: this.onSubmit\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n        className: \"field\"\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"Name\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"input\", {\n        type: \"text\",\n        name: \"name\",\n        value: this.state.name,\n        onChange: this.onChange,\n        maxLength: \"200\",\n        placeholder: this.source.name\n      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", {\n        className: \"ui positive basic button \" + (this.state.loading ? \"disabled\" : \"\"),\n        type: \"submit\"\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"i\", {\n        className: \"save icon\"\n      }), \"Save\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", {\n        className: \"ui secondary basic button\",\n        type: \"button\",\n        onClick: this.onCancel\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"i\", {\n        className: \"close icon\"\n      }), \"Cancel\")), this.state.message !== null ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n        className: \"ui message transition \" + (this.state.message.bad ? \"negative\" : \"positive\")\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n        className: \"header\"\n      }, this.state.message.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"p\", null, this.state.message.content)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_name_table__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n        items: this.state.items,\n        onEdit: this.onEdit,\n        onDelete: this.onDelete\n      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_delete_modal__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n        onYes: this.onConfirmDelete,\n        title: this.source.name.toLowerCase(),\n        content: this.deleteItem && this.deleteItem.name\n      }));\n    }\n  }]);\n\n  return NameForm;\n}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);\n\nvar sources = {\n  campus: {\n    name: \"Campus\",\n    api: \"/api/campus\"\n  },\n  status: {\n    name: \"Status\",\n    api: \"/api/status\"\n  },\n  category: {\n    name: \"Category\",\n    api: \"/api/category\"\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (NameForm);\nvar domContainer = document.querySelector('#name-form');\nvar source = domContainer.dataset.source;\nreact_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NameForm, {\n  source: source\n}), domContainer);\n\n//# sourceURL=webpack:///./react/name-form.js?");
+
+/***/ }),
+
+/***/ "./react/name-table.js":
+/*!*****************************!*\
+  !*** ./react/name-table.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } return _assertThisInitialized(self); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\n\n\nvar NameTable =\n/*#__PURE__*/\nfunction (_React$Component) {\n  _inherits(NameTable, _React$Component);\n\n  function NameTable() {\n    _classCallCheck(this, NameTable);\n\n    return _possibleConstructorReturn(this, _getPrototypeOf(NameTable).apply(this, arguments));\n  }\n\n  _createClass(NameTable, [{\n    key: \"render\",\n    value: function render() {\n      var _this = this;\n\n      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"table\", {\n        className: \"ui celled table\"\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"thead\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"tr\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"th\", null, \"Name\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"th\", null, \"Actions\"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"tbody\", null, this.props.items.map(function (item) {\n        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"tr\", {\n          key: item.id\n        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"td\", {\n          \"data-label\": \"Name\"\n        }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"td\", {\n          \"data-label\": \"Actions\",\n          className: \"right collapsing aligned\"\n        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", {\n          className: \"ui vertical primary basic animated mini button\",\n          onClick: _this.props.onEdit.bind(_this, item)\n        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"span\", {\n          className: \"hidden content\"\n        }, \"Edit\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n          className: \"visible content\"\n        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"i\", {\n          className: \"pencil alternate icon\"\n        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", {\n          className: \"ui vertical negative basic animated mini button\",\n          onClick: _this.props.onDelete.bind(_this, item)\n        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n          className: \"hidden content\"\n        }, \"Delete\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n          className: \"visible content\"\n        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"i\", {\n          className: \"trash alternate icon\"\n        })))));\n      })));\n    }\n  }]);\n\n  return NameTable;\n}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (NameTable);\n\n//# sourceURL=webpack:///./react/name-table.js?");
+
+/***/ })
+
+/******/ });

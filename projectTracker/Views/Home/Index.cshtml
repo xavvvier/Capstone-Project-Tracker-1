@@ -1,3 +1,77 @@
 ﻿@{
-    ViewBag.menu = "Dashboard";
+ViewBag.menu = "Dashboard";
+}
+<div class="dashboard ui container">
+   <h1>Dashboard</h1>
+   <div class="ui middle aligned center aligned grid">
+      <div class="ui mini buttons">
+         <button class="ui button">One</button>
+         <button class="ui button active">Two</button>
+         <button class="ui button">Three</button>
+         <button class="ui button">Cuarto</button>
+      </div>
+   </div>
+   <div class="ui middle aligned center aligned grid">
+      <div class="content">
+         <article class="project ui two column doubling stackable grid">
+            <div class="column">
+               <span class="title">Acme inc.</span>
+               <span class="grayed">Applied Research</span>
+               <div class="ui green progress">
+                  <div class="bar" style="width:33%">
+                     <div class="progress">33%</div>
+                  </div>
+               </div>
+               <div class="section">Current checkpoint</div>
+               <span>Stage 2 - Scoping</span>
+               <div>
+                  <label class="check">
+                     <input type="checkbox" value=""/>
+                     Dean Approval
+                  </label>
+                  <span class="due-date">
+                     <i class="icon calendar alternate outline"></i>
+                     <span>Due: 2020-03-12</span>
+                  </span>
+               </div>
+            </div>
+            <div class="column">
+               <div class="section">
+                  Latest Notes
+                  <button class="ui basic mini button "><i class="plus icon"></i> Add note</button>
+               </div>
+               <div class="note">
+                  <div>
+                     <i class="icon calendar alternate outline"></i>
+                     <span class="grayed">2015-03-23</span>
+                     <i class="icon clock outline"></i>
+                     <span class="grayed">
+                        Time spent: 23 minutes.
+                     </span>
+                  </div>
+                  <div>
+                     This is the note content, suppose there is something meaningful here
+                  </div>
+               </div>
+               <div class="note">
+                  <div>
+                     <i class="icon calendar alternate outline"></i>
+                     <span class="grayed">2015-03-23</span>
+                     <i class="icon clock outline"></i>
+                     <span class="grayed">
+                        Time spent: 23 minutes.
+                     </span>
+                  </div>
+                  <div>
+                     This is the note content, suppose there is something meaningful here
+                  </div>
+               </div>
+            </div>
+         </article>
+      </div>
+   </div>
+</div>
+@section Scripts{
+<script src="~/js/react/vendor.bundle.js" asp-append-version="true"></script>
+<script src="~/js/react/dashboard.bundle.js" asp-append-version="true"></script>
 }
