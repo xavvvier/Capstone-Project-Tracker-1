@@ -89,7 +89,8 @@ namespace projectTracker.Controllers
         public async Task<IActionResult> Update(ProjectCheckpoint cp) {
             try
             {
-                projectManager.Update(cp);
+                projectManager.Attach(cp);
+                projectManager.Entry(cp).Property("Completed").IsModified = true;
                 await projectManager.SaveChangesAsync();
                 return Ok(cp);
             }

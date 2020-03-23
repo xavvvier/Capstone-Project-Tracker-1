@@ -15,6 +15,7 @@ export default class AddNoteModal extends React.Component {
       e.preventDefault();
       let {minutes, content} = this.state;
       this.props.onSave({minutes, content});
+      this.setState({content: '', minutes: 0});
    }
 
    render() {

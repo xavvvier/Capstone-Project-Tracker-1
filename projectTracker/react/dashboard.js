@@ -7,6 +7,7 @@ import DeleteModal from './delete-modal.js';
 
 const DATE_FORMAT = "MMMM Do YYYY, h:mm:ss a";
 const SHORT_DATE_FORMAT = "MMMM D YYYY";
+const TRANSFER_DATE_FORMAT = "YYYY-MM-DDTHH:mm:ss";
 
 const source = {
    campus: { api: '/api/campus' },
@@ -42,23 +43,25 @@ class Dashboard extends React.Component {
 
    addNote = (p, e) => { this.project = p; $('.ui.modal.add').modal('show'); }
    onSaveNote = (note) => {
-      note.timestamp = moment().format();
+      note.timestamp = moment().format(TRANSFER_DATE_FORMAT);
       note.projectId = this.project.id;
       axios.post(source.note.api, note)
-         .then(res => {
-            //TODO: update UI, total time, last notes
-            // this.setState({ campuses: res.data });
-            console.log('replied');
-         });
+         .then(res => this.reloadNotes(res.data));
    }
-   deleteNote = (n, e) => { this.note = n; $('.ui.modal.delete').modal('show'); }
+   reloadNotes(data) {
+      this.project.totalTime = data.totalTime;
+      this.project.notes = data.notes;
+      this.setState({ projects: this.state.projects });
+   }
+   deleteNote = (n, p, e) => { 
+      this.project = p;
+      this.note = n; 
+      $('.ui.modal.delete').modal('show'); 
+
+   }
    onConfirmDelete = () => {
       axios.delete(source.note.api + this.note.id)
-         .then(res => {
-            //TODO: update UI, total time, last notes
-            // this.setState({ campuses: res.data });
-            console.log('replied deleted');
-         });
+         .then(res => this.reloadNotes(res.data));
    }
    onClickCheckpoint = (cp, e) => {
       let checkpoint = Object.assign(cp, {});
@@ -147,7 +150,7 @@ class Dashboard extends React.Component {
                            Latest Notes
                            <button className="ui basic mini button" onClick={this.addNote.bind(this, project)}><i className="plus icon"></i> Add note</button>
                         </div>
-                        {project.notes.map(note => (<div key={note.id} className="note">
+                        {project.notes.slice(0, 4).map(note => (<div key={note.id} className="note">
                            <div>
                               <i className="icon calendar alternate outline"></i>
                               <span className="grayed">{moment(note.timestamp).format(DATE_FORMAT)} </span>
@@ -159,7 +162,7 @@ class Dashboard extends React.Component {
                            <div>
                               {note.content}
                               <i className="grayed icon trash alternate"
-                                 onClick={this.deleteNote.bind(this, note)}
+                                 onClick={this.deleteNote.bind(this, note, project)}
                                  title="Delete this note"></i>
                            </div>
                         </div>
