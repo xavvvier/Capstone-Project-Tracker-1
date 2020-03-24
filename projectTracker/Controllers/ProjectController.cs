@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using projectTracker.Models;
 using System.Linq;
+using System.Text;
 
 namespace projectTracker.Controllers
 {
@@ -98,6 +99,20 @@ namespace projectTracker.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost]
+        public FileResult Export() {
+
+            List<object> projects = projectManager.getExportProjects();
+    
+            //Insert the Column Names.
+            projects.Insert(0, new string[7] { "Partner", "Curiculum Consultant", "Description", "Start Date", "End Date", "Project Value", "Total Time Spent" });
+    
+            StringBuilder projectString = projectManager.buildProjectString(projects);
+    
+            return File(Encoding.UTF8.GetBytes(projectString.ToString()), "text/csv", "Projects.csv");
+        }
+
 
     }
 }

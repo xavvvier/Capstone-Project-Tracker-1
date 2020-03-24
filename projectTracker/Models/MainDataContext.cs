@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace projectTracker.Models
 {
@@ -66,6 +67,39 @@ namespace projectTracker.Models
               .Include(p => p.Campus)
               .Include(p => p.Status)
               .ToList<Project>();
+        }
+
+        //Get Project data for exporting to CSV 
+        public List<object> getExportProjects() {
+            List<object> projects = (from project in Project.ToList()
+                                    select new[] { project.Partner.ToString(),
+                                                   project.CurriculumConsultant,
+                                                   project.Description,
+                                                   project.StartDate.ToString(),
+                                                   project.EndDate.ToString(),
+                                                   project.Value.ToString(),
+                                                   project.TotalTime.ToString()
+                                    }).ToList<object>();
+            return projects;
+        }
+
+        //Create String for export to CSV
+        public StringBuilder buildProjectString(List<object> projects) {
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < projects.Count; i++)
+            {
+                string[] project = (string[])projects[i];
+                for (int j = 0; j < project.Length; j++)
+                {
+                    //Append data with separator.
+                    sb.Append(project[j] + ',');
+                }
+    
+                //Append new line character.
+                sb.Append("\r\n");    
+            }
+            return sb;
         }
 
         //Get Project by Id
@@ -134,14 +168,8 @@ namespace projectTracker.Models
 
          public List<Note> getNotes(int id) {
             return Note.Where(n => n.ProjectId == id)
-                       .OrderByDescending(n => n.Timestamp)
+                       .OrderBy(n => n.Timestamp)
                        .ToList();
          }
-        //Get a Category by Id
-        // public Category CategoryById(int id)
-        // {
-        //    return Category.FirstOrDefault(c => c.Id == id);
-        // }
-        //
     }
 }
