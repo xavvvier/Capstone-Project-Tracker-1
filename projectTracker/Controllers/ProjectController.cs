@@ -86,11 +86,26 @@ namespace projectTracker.Controllers
         }
 
         [HttpPut("markcheckpoint")]
-        public async Task<IActionResult> Update(ProjectCheckpoint cp) {
+        public async Task<IActionResult> UpdateProjectCheckpointCompleted(ProjectCheckpoint cp) {
             try
             {
                 projectManager.Attach(cp);
                 projectManager.Entry(cp).Property("Completed").IsModified = true;
+                await projectManager.SaveChangesAsync();
+                return Ok(cp);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("markduedate")]
+        public async Task<IActionResult> UpdateProjectCheckpointDueDate(ProjectCheckpoint cp) {
+            try
+            {
+                projectManager.Attach(cp);
+                projectManager.Entry(cp).Property("DueDate").IsModified = true;
                 await projectManager.SaveChangesAsync();
                 return Ok(cp);
             }
