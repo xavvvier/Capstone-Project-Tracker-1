@@ -66,7 +66,7 @@ body > .grid {
    margin-bottom: 20px;
 }
 .ui.container.dashboard {
-   width: 900px;
+   width: 1000px;
 }
 .dashboard .buttons{
    margin-bottom: 1rem;
@@ -89,9 +89,6 @@ body > .grid {
 }
 .dashboard .project .due-date{
    float: right;
-   cursor: pointer;
-}
-.dashboard .project .check{
    cursor: pointer;
 }
 .dashboard .progress{
@@ -128,6 +125,12 @@ body > .grid {
 .dashboard .checkpoints .checkpoint{
    transition: 1s;
    height: 20px;
+}
+.dashboard .project .checkpoint.current .check{
+   font-weight: bold;
+}
+.dashboard .project .checkpoint.enabled .check{
+   cursor: pointer;
 }
 
 /* ----------------------------------------------
