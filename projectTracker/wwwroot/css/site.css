@@ -59,6 +59,9 @@ body > .grid {
    margin-left: .3em;
    font-size: .8rem;
 }
+#project-form .input{
+   float: right;
+}
 .modal.detail section{
    margin-top: 20px;
 }

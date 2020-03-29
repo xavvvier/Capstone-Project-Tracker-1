@@ -5,6 +5,8 @@ import DeleteModal from "./delete-modal";
 import ProjectDetailModal from "./project-detail-modal";
 import axios from "axios";
 import DropDown from './dropdown';
+import SearchInput from './search-input';
+import { debounce } from "lodash";
 
 class ProjectForm extends React.Component {
     constructor(props) {
@@ -22,7 +24,8 @@ class ProjectForm extends React.Component {
           campuses : [],
           projectView: {},
           checkpoints: [],
-          notes: []
+          notes: [],
+          filter: ''
        };
        this.source = source;
     }
@@ -45,7 +48,7 @@ class ProjectForm extends React.Component {
 
     loadItems = () => {
        this.setState({loading: true});
-       let queryString = '/?sort=' + this.sortedBy + '&asc=' + (this.sortOrder?"1":"0");
+       let queryString = '/?sort=' + this.sortedBy + '&asc=' + (this.sortOrder?"1":"0") + '&filter=' + this.state.filter;
        axios.get(this.source.api + queryString)
           .then(res => {
              this.setState({ loading: false, items: res.data });
@@ -151,15 +154,24 @@ class ProjectForm extends React.Component {
        this.loadItems();
     }
 
+    changeSearch = (value) => {
+       this.setState({filter: value});
+       this.loadItems();
+    }
+
     render() {
         const showForm = this.state.displayForm;
-        return <div className="name-form-container" >
+        return <div className="project-form-container" >
             <button onClick={this.onAddNew} className={"ui positive basic button " + (showForm?"hid":"")}>
                 <i className="plus icon"></i> Add new
             </button>
             <a target="_blank" href="/api/project/export" className={"ui secondary basic button " + (showForm?"hid":"")}>
                <i className="icon download"></i> Export
             </a>
+            <div className={"ui icon input " + (showForm?"hid":"")}>
+               <SearchInput onSearch={this.changeSearch}/>
+               <i className="search icon"></i>
+            </div>
             <div className={this.state.loading?"ui active centered inline loader":""}></div>
             <form className={showForm ? "ui form scale-in-ver-top" : "ui form hid"}
                 method="post" onSubmit={this.onSubmit}>
