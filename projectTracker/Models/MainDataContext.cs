@@ -87,13 +87,15 @@ namespace projectTracker.Models
         public StringBuilder buildProjectString(List<object> projects) {
 
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < projects.Count; i++)
-            {
+            for (int i = 0; i < projects.Count; i++) {
                 string[] project = (string[])projects[i];
-                for (int j = 0; j < project.Length; j++)
-                {
-                    //Append data with separator.
-                    sb.Append(project[j] + ',');
+                for (int j = 0; j < project.Length; j++) {
+                  if (project[j].Contains(",")) {
+                     sb.Append(string.Format("\"{0}\",", project[j]));
+                  } else {
+                     //Append data with separator.
+                     sb.Append(string.Format("{0},", project[j]));
+                  }
                 }
     
                 //Append new line character.
