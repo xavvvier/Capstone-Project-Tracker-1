@@ -116,7 +116,7 @@ namespace projectTracker.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet("export")]
         public FileResult Export() {
 
             List<object> projects = projectManager.getExportProjects();

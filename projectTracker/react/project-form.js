@@ -157,6 +157,9 @@ class ProjectForm extends React.Component {
             <button onClick={this.onAddNew} className={"ui positive basic button " + (showForm?"hid":"")}>
                 <i className="plus icon"></i> Add new
             </button>
+            <a target="_blank" href="/api/project/export" className={"ui secondary basic button " + (showForm?"hid":"")}>
+               <i className="icon download"></i> Export
+            </a>
             <div className={this.state.loading?"ui active centered inline loader":""}></div>
             <form className={showForm ? "ui form scale-in-ver-top" : "ui form hid"}
                 method="post" onSubmit={this.onSubmit}>
