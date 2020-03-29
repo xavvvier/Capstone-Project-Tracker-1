@@ -90,11 +90,12 @@ namespace projectTracker.Models
             for (int i = 0; i < projects.Count; i++) {
                 string[] project = (string[])projects[i];
                 for (int j = 0; j < project.Length; j++) {
-                  if (project[j].Contains(",")) {
-                     sb.Append(string.Format("\"{0}\",", project[j]));
+                  string stripped = project[j].Replace("\"", "'");
+                  if (stripped.Contains(",")) {
+                     sb.Append(string.Format("\"{0}\",", stripped));
                   } else {
                      //Append data with separator.
-                     sb.Append(string.Format("{0},", project[j]));
+                     sb.Append(string.Format("{0},", stripped));
                   }
                 }
     
