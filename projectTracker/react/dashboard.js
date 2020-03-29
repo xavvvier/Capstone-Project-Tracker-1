@@ -182,7 +182,7 @@ class Dashboard extends React.Component {
                            <div key={checkpoint.projectId + ':' + checkpoint.checkpointId}
                               style={checkpoint.style}
                               className={"checkpoint " + (checkpoint.current?" current ":"") + (checkpoint.enabled?" enabled ":"")}>
-                              <label className="check" onClick={this.onClickCheckpoint.bind(this, checkpoint)}>
+                              <label className="text" onClick={this.onClickCheckpoint.bind(this, checkpoint)}>
                                  <i className={"icon circle outline " + (checkpoint.completed?"check":"")}></i>
                                  {checkpoint.checkpoint.description}
                               </label>

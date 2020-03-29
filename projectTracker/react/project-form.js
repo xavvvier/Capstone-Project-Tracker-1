@@ -9,6 +9,8 @@ import DropDown from './dropdown';
 class ProjectForm extends React.Component {
     constructor(props) {
        super(props);
+       this.sortedBy = '';
+       this.sortOrder = '';
        this.state = {
           displayForm: false,
           items: [],
@@ -43,7 +45,8 @@ class ProjectForm extends React.Component {
 
     loadItems = () => {
        this.setState({loading: true});
-       axios.get(this.source.api)
+       let queryString = '/?sort=' + this.sortedBy + '&asc=' + (this.sortOrder?"1":"0");
+       axios.get(this.source.api + queryString)
           .then(res => {
              this.setState({ loading: false, items: res.data });
           });
@@ -140,6 +143,12 @@ class ProjectForm extends React.Component {
                 message: {bad: true, content: err.response.data}
              });
           });
+    }
+
+    onSort = (column, order) => {
+       this.sortOrder = order;
+       this.sortedBy = column;
+       this.loadItems();
     }
 
     render() {
@@ -244,6 +253,7 @@ class ProjectForm extends React.Component {
             }
             <ProjectTable items={this.state.items}
                onEdit={this.onEdit}
+               onSort={this.onSort}
                onView={this.onView}
                onDelete={this.onDelete}/>
             <DeleteModal onYes={this.onConfirmDelete} title="project"/>

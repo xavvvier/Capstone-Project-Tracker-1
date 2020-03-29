@@ -2,22 +2,55 @@ import React from "react";
 
 class ProjectTable extends React.Component {
 
+    constructor(props) {
+       super(props);
+       this.state = {
+          column: '',
+          asc: true
+       };
+    }
+
     formatDate(date) {
        return new Date(Date.parse(date)).toLocaleDateString();
+    }
+
+    sort = (column) => {
+       const asc = this.state.column == column ? !this.state.asc : true;
+       this.setState({column, asc});
+       this.props.onSort(column, asc);
+    }
+
+    sortIcon = (column) => {
+       if (column == this.state.column) {
+          if (this.state.asc) {
+             return (<i className="icon sort alphabet down"></i>);
+          } else {
+             return (<i className="icon sort alphabet up"></i>);
+          }
+       } else {
+          return <React.Fragment/>;
+       }
+    }
+    
+    sortClass = (column) => {
+       if (column == this.state.column) {
+          return "sortable sorted";
+       }
+       return "sortable";
     }
 
     render() {
         return <table className="ui celled table">
             <thead><tr>
-               <th>Campus</th>
-               <th>Category</th>
-               <th>Partner</th>
-               <th>Description</th>
-               <th>Curriculum Consultant</th>
-               <th>Start Date</th>
-               <th>End Date</th>
-               <th>Value</th>
-               <th>Status</th>
+               <th className={this.sortClass("campus")} onClick={this.sort.bind(this, "campus")}>Campus {this.sortIcon("campus")}</th>
+               <th className={this.sortClass("category")} onClick={this.sort.bind(this, "category")}>Category {this.sortIcon("category")}</th>
+               <th className={this.sortClass("partner")} onClick={this.sort.bind(this, "partner")}>Partner {this.sortIcon("partner")}</th>
+               <th className={this.sortClass("description")} onClick={this.sort.bind(this, "description")}>Description {this.sortIcon("description")}</th>
+               <th className={this.sortClass("curriculum")} onClick={this.sort.bind(this, "curriculum")}>Curriculum Consultant {this.sortIcon("curriculum")}</th>
+               <th className={this.sortClass("startdate")} onClick={this.sort.bind(this, "startdate")}>Start Date {this.sortIcon("startdate")}</th>
+               <th className={this.sortClass("enddate")} onClick={this.sort.bind(this, "enddate")}>End Date {this.sortIcon("enddate")}</th>
+               <th className={this.sortClass("value")} onClick={this.sort.bind(this, "value")}>Value {this.sortIcon("value")}</th>
+               <th className={this.sortClass("status")} onClick={this.sort.bind(this, "status")}>Status {this.sortIcon("status")}</th>
                <th>Actions</th>
             </tr></thead>
             <tbody>
