@@ -59,14 +59,98 @@ namespace projectTracker.Models
               .ToList<ProjectStatus>();
         }
 
-        //Get all Projects ordered by Partner
-        public List<Project> getProjects()
+        //Get all Projects ordered by Partner or sorted and filtered by column
+        public List<Project> getProjects(string column, int order, string filter)
         {
-           return Project.OrderBy(c => c.Partner)
-              .Include(p => p.Category)
-              .Include(p => p.Campus)
-              .Include(p => p.Status)
-              .ToList<Project>();
+            IQueryable<Project> query = Project
+               .Include(p => p.Category)
+               .Include(p => p.Campus)
+               .Include(p => p.Status);
+
+         	switch (column) {
+               case "campus":
+                  if (order == 1) {
+                     query = query.OrderBy(c => c.Campus.Name);
+                  } else {
+                     query = query.OrderByDescending(c => c.Campus.Name);
+                  }
+                  break;
+
+               case "category":
+                  if (order == 1) {
+                     query = query.OrderBy(c => c.Category.Name);
+                  } else {
+                     query = query.OrderByDescending(c => c.Category.Name);
+                  }
+                  break;
+
+               case "partner":
+                  if (order == 1) {
+                     query = query.OrderBy(c => c.Partner);
+                  } else {
+                     query = query.OrderByDescending(c => c.Partner);
+                  }
+                  break;
+
+               case "description":
+                  if (order == 1) {
+                     query = query.OrderBy(c => c.Description);
+                  } else {
+                     query = query.OrderByDescending(c => c.Description);
+                  }
+                  break;
+
+               case "curriculum":
+                  if (order == 1) {
+                     query = query.OrderBy(c => c.CurriculumConsultant);
+                  } else {
+                     query = query.OrderByDescending(c => c.CurriculumConsultant);
+                  }
+                  break;
+
+               case "startdate":
+                  if (order == 1) {
+                     query = query.OrderBy(c => c.StartDate);
+                  } else {
+                     query = query.OrderByDescending(c => c.StartDate);
+                  }
+                  break;
+
+               case "enddate":
+                  if (order == 1) {
+                     query = query.OrderBy(c => c.EndDate);
+                  } else {
+                     query = query.OrderByDescending(c => c.EndDate);
+                  }
+                  break;
+
+               case "value":
+                  if (order == 1) {
+                     query = query.OrderBy(c => c.Value);
+                  } else {
+                     query = query.OrderByDescending(c => c.Value);
+                  }
+                  break;
+
+               case "status":
+                  if (order == 1) {
+                     query = query.OrderBy(c => c.Status.Name);
+                  } else {
+                     query = query.OrderByDescending(c => c.Status.Name);
+                  }
+                  break;
+
+               default:
+
+                  query = query.OrderBy(c => c.Partner);
+                  break;
+            }
+
+            if (!string.IsNullOrEmpty(filter)) {
+               query = query.Where(p => p.Partner.ToLower().Contains(filter.ToLower())|| p.Description.ToLower().Contains(filter.ToLower()));
+
+            }
+            return query.ToList();
         }
 
         //Get Project data for exporting to CSV 
@@ -171,7 +255,7 @@ namespace projectTracker.Models
 
          public List<Note> getNotes(int id) {
             return Note.Where(n => n.ProjectId == id)
-                       .OrderBy(n => n.Timestamp)
+                       .OrderByDescending(n => n.Timestamp)
                        .ToList();
          }
     }

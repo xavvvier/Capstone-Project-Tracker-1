@@ -23,8 +23,8 @@ namespace projectTracker.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Project> Index() {
-            return projectManager.getProjects();
+        public IEnumerable<Project> Index(string sort, int asc, string filter) {
+            return projectManager.getProjects(sort, asc, filter);
         }
 
         [HttpPost]
@@ -85,6 +85,12 @@ namespace projectTracker.Controllers
         public IEnumerable<Project> FilterProjects(int id) {
             return projectManager.getFilteredProjects(id);
         }
+
+        // [HttpGet("{column}{asc}{filter")]
+        // public IEnumerable<Project> FilterAndSortedProjects() {
+        //     return projectManager.getFilteredAndSortedProjects(string column, int asc, string filter);
+        // }
+
 
         [HttpPut("markcheckpoint")]
         public async Task<IActionResult> UpdateProjectCheckpointCompleted(ProjectCheckpoint cp) {
