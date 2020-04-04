@@ -32,6 +32,7 @@ class Dashboard extends React.Component {
          message: null,
          dueDate: ''
       };
+      this.busy = false;
    }
 
    componentDidMount() { this.loadItems(); }
@@ -45,10 +46,15 @@ class Dashboard extends React.Component {
 
    addNote = (p, e) => { this.project = p; $('.ui.modal.add').modal('show'); }
    onSaveNote = (note) => {
+      if(this.busy) { return; }
+      this.busy = true;
       note.timestamp = moment().format(TRANSFER_DATE_FORMAT);
       note.projectId = this.project.id;
       axios.post(source.note.api, note)
-         .then(res => this.reloadNotes(res.data));
+         .then(res => {
+            this.reloadNotes(res.data);
+            this.busy = false;
+         });
    }
    reloadNotes(data) {
       this.project.totalTime = data.totalTime;
