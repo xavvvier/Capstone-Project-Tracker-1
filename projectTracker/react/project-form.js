@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import ProjectTable from "./project-table";
 import DeleteModal from "./delete-modal";
 import ProjectDetailModal from "./project-detail-modal";
-import axios from "axios";
 import DropDown from './dropdown';
 import SearchInput from './search-input';
 import { debounce } from "lodash";

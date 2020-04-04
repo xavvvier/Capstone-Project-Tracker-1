@@ -2,7 +2,6 @@
 import ReactDOM from "react-dom";
 import NameTable from "./name-table";
 import DeleteModal from "./delete-modal";
-import axios from "axios";
 
 class NameForm extends React.Component {
     constructor(props) {

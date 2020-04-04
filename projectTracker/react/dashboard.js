@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from "axios";
 import ButtonGroup from './button-group.js';
 import AddNoteModal from './add-note-modal.js';
 import DeleteModal from './delete-modal.js';

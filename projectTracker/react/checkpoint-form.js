@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import CheckpointTable from "./checkpoint-table";
 import DeleteModal from "./delete-modal";
-import axios from "axios";
 import DropDown from './dropdown';
 
 class CheckpointForm extends React.Component {

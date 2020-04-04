@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import StageTable from "./stage-table";
 import DeleteModal from "./delete-modal";
-import axios from "axios";
 
 class StageForm extends React.Component {
     constructor(props) {
