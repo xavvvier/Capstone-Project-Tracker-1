@@ -3,7 +3,7 @@
 <head>
     <title>Project Tracker</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -13,7 +13,7 @@
         <div class="header item">
             <strong>Project Tracker <i style="font-size: 1.2em;" class="tasks icon"></i></strong>
         </div>
-        <a class="item @(ViewBag.menu == "Dashboard"?"active":"")"" href="@Url.Action("Index", "Home")">Dashboard</a>
+        <a class="item @(ViewBag.menu == "Dashboard"?"active":"")" " href="@Url.Action("Index", "Home")">Dashboard</a>
         <a class="item @(ViewBag.menu == "Projects"?"active":"")" href="@Url.Action("Projects", "Home")">Projects</a>
         <div class="ui dropdown item">
             Settings
@@ -26,8 +26,13 @@
                 <a class="item @(ViewBag.menu == "Status"?"active":"")" href="@Url.Action("Status", "Home")">Status</a>
             </div>
         </div>
-        <div class="right menu">
-            <a class="ui item" href="@Url.Action("Bye", "Login")">Logout</a>
+        <div class="ui dropdown item right">
+            <span>@User.Identity.Name</span>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item" href="/Login/Reset">Change Password</a>
+                <a class="item" href="@Url.Action("Bye", "Login")">Logout</a>
+            </div>
         </div>
     </div>
 

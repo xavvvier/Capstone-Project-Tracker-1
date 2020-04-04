@@ -50,7 +50,14 @@ namespace projectTracker
                   options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             //Set up Identity framework
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<MainDataContext>();
+            services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 8;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireDigit = false;
+            }).AddEntityFrameworkStores<MainDataContext>();
             services.ConfigureApplicationCookie(options =>
             {
                 // Cookie settings

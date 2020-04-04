@@ -1,10 +1,9 @@
 using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using projectTracker.Models;
-using System.Linq; 
-using System.Threading.Tasks;  
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace projectTracker.Controllers
 {
@@ -12,11 +11,13 @@ namespace projectTracker.Controllers
     {
 
         private SignInManager<User> _signManager;
+        private UserManager<User> _userManager;
 
         //Inject the SingInManager
-        public LoginController(SignInManager<User> signManager)
+        public LoginController(SignInManager<User> signManager, UserManager<User> userManager)
         {
             _signManager = signManager;
+            _userManager = userManager;
         }
 
         [HttpGet]
@@ -42,6 +43,39 @@ namespace projectTracker.Controllers
            ViewBag.Message = "Invalid login attempt";
            ModelState.AddModelError("","Invalid login attempt");
            return View(login);
+        }
+
+        [HttpGet()]
+        public IActionResult Reset()
+        {
+           ViewBag.Error = false;
+           return View();
+        }
+
+        [HttpPost("reset")]
+        [Authorize]
+        public async Task<IActionResult> Reset(ChangePasswordViewModel model)
+        {
+           ViewBag.Error = true;
+           if(model.NewPassword != model.NewPasswordConfirmation) {
+              ModelState.AddModelError("","The new password doesn't match the password confirmation.");
+              return View("Reset");
+           }
+           var user = await _userManager.GetUserAsync(User);
+           var changeResult = await _userManager.ChangePasswordAsync(user, model.Password, model.NewPassword);
+           if(changeResult.Succeeded) {
+              ViewBag.Message = "Password changed successfully";
+              ViewBag.Error = false;
+           } else {
+              String message = "Invalid current password";
+              foreach(var error in changeResult.Errors)
+              {
+                message = error.Description;
+                break;
+              }
+              ModelState.AddModelError("", message);
+           }
+           return View("Reset");
         }
 
         [HttpGet]

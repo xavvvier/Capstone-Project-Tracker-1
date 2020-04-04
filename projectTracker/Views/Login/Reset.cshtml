@@ -1,0 +1,41 @@
+@model ChangePasswordViewModel
+ <div class="reset ui container" style="max-width:500px !important;">
+   <div class="ui middle aligned center aligned grid">
+     <div class="column">
+       <h2 class="ui header">
+         <div>
+            Reset Password
+         </div>
+       </h2>
+       <form class="ui large form"  asp-controller="Login" asp-action="Reset" method="POST">
+         <div class="ui stacked segment">
+           <div class="field">
+             <div class="ui left icon input">
+               <i class="lock icon"></i>
+               <input type="password" name="password" required placeholder="Current Password">
+             </div>
+           </div>
+           <div class="field">
+             <div class="ui left icon input">
+               <i class="lock icon"></i>
+               <input type="password" name="newpassword" required placeholder="New Password">
+             </div>
+           </div>
+           <div class="field">
+             <div class="ui left icon input">
+               <i class="lock icon"></i>
+               <input type="password" name="newpasswordconfirmation" required placeholder="Confirm New Password">
+             </div>
+           </div>
+           <button class="ui positive basic button" type="submit">Save</button>
+         </div>
+         @if(ViewBag.Error) {
+         <div asp-validation-summary="All" class="ui visible error message"></div>
+         }
+         @if(!ViewBag.Error && ViewBag.Message != null) {
+         <div class="ui visible success message">@ViewBag.Message</div>
+         }
+       </form>
+     </div>
+   </div>
+ </div>
