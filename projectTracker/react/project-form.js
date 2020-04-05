@@ -24,7 +24,8 @@ class ProjectForm extends React.Component {
           projectView: {},
           checkpoints: [],
           notes: [],
-          filter: ''
+          filter: '',
+          errors: {}
        };
        this.source = source;
     }
@@ -65,8 +66,27 @@ class ProjectForm extends React.Component {
        });
     }
 
+    validate = () => {
+       let errors = {};
+       if(!Number(this.state.project.campusId)>0) {
+          errors.campus = "Required field";
+          errors.active = true;
+       }
+       if(!Number(this.state.project.categoryId)>0) {
+          errors.category = "Required field";
+          errors.active = true;
+       }
+       if(!Number(this.state.project.statusId)>0) {
+          errors.status = "Required field";
+          errors.active = true;
+       }
+       this.setState({errors});
+       return !errors.active;
+    }
+
     onSubmit = (e) => {
        e.preventDefault();
+       if(!this.validate()) { return; }
        this.setState({loading: true});
        //Change the http method depending if the operation is edit or save
        let method = this.state.editingItem == null ? 'post' : 'put';
@@ -94,7 +114,7 @@ class ProjectForm extends React.Component {
        });
     }
 
-    onAddNew = (e) => { this.setState({ displayForm: true, project: this.emptyEntity(), editingItem: null, message: null }); }
+    onAddNew = (e) => { this.setState({ errors: {}, displayForm: true, project: this.emptyEntity(), editingItem: null, message: null }); }
     onCancel = (e) => { this.setState({ displayForm: false, message: null }); }
     onChange = (e) => { 
        let project = this.state.project;
@@ -106,7 +126,7 @@ class ProjectForm extends React.Component {
        let projectCopy = Object.assign({}, item);
        projectCopy.startDate = projectCopy.startDate.substr(0,10);
        projectCopy.endDate = projectCopy.endDate.substr(0,10);
-       this.setState({ displayForm: true, project: projectCopy, editingItem: item, message: null});
+       this.setState({ errors: {}, displayForm: true, project: projectCopy, editingItem: item, message: null});
     };
 
     onView = (item) => {
@@ -175,7 +195,7 @@ class ProjectForm extends React.Component {
             <form className={showForm ? "ui form scale-in-ver-top" : "ui form hid"}
                 method="post" onSubmit={this.onSubmit}>
                 <div className="two fields">
-                   <div className="field">
+                   <div className={"field" + (this.state.errors.campus?" error ":"")}>
                        <label>Campus</label>
                        <DropDown value={this.state.project.campusId}
                            name="campusId"
@@ -183,7 +203,7 @@ class ProjectForm extends React.Component {
                            data={this.state.campuses}
                            onChange={this.onChange} />
                    </div>
-                   <div className="field">
+                   <div className={"field" + (this.state.errors.category?" error ":"")}>
                        <label>Category</label>
                        <DropDown value={this.state.project.categoryId}
                            name="categoryId"
@@ -195,7 +215,7 @@ class ProjectForm extends React.Component {
                 <div className="two fields">
                    <div className="field">
                        <label>Partner</label>
-                       <input type="text" name="partner"
+                       <input type="text" name="partner" required="required"
                            value={this.state.project.partner}
                            onChange={this.onChange} maxLength="200"
                            placeholder="Partner name" />
@@ -210,7 +230,7 @@ class ProjectForm extends React.Component {
                 </div>
                 <div className="field">
                    <label>Description</label>
-                   <textarea 
+                   <textarea  required="required"
                      value={this.state.project.description}
                      name="description"
                      onChange={this.onChange}
@@ -220,13 +240,13 @@ class ProjectForm extends React.Component {
                 <div className="two fields">
                    <div className="field">
                        <label>Start Date</label>
-                       <input type="date" name="startDate"
+                       <input type="date" name="startDate" required="required"
                            value={this.state.project.startDate}
                            onChange={this.onChange} maxLength="10"/>
                    </div>
                    <div className="field">
                        <label>End Date</label>
-                       <input type="date" name="endDate"
+                       <input type="date" name="endDate" required="required"
                            value={this.state.project.endDate}
                            onChange={this.onChange} maxLength="10"/>
                    </div>
@@ -234,12 +254,12 @@ class ProjectForm extends React.Component {
                 <div className="two fields">
                    <div className="field">
                        <label>Value</label>
-                       <input type="number" name="value"
+                       <input type="number" name="value" required="required"
                            value={this.state.project.value}
                            onChange={this.onChange} maxLength="200"
                            placeholder="1500" />
                    </div>
-                   <div className="field">
+                   <div className={"field" + (this.state.errors.status?" error ":"")}>
                        <label>Status</label>
                        <DropDown value={this.state.project.statusId}
                            name="statusId"

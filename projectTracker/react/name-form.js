@@ -11,7 +11,8 @@ class NameForm extends React.Component {
             items: [],
             name: '',
             editingItem: null,
-            message: null
+            message: null,
+            errors: {}
         };
         this.source = sources[this.props.source];
     }
@@ -88,7 +89,7 @@ class NameForm extends React.Component {
                 method="post" onSubmit={this.onSubmit}>
                 <div className="field">
                     <label>Name</label>
-                    <input type="text" name="name"
+                    <input type="text" name="name" required="required"
                         value={this.state.name}
                         onChange={this.onChange} maxLength="200"
                         placeholder={this.source.name} />

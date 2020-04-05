@@ -1,4 +1,4 @@
-﻿$('.ui.dropdown').dropdown();
+﻿$('.menu .ui.dropdown').dropdown();
 
 let timeoutWindow = 1000 * 60 * 38; //40 minutes - 2. Same as in Startup.cs@58. Give one minute room and another for the final warning
 let warningInterval, finalInterval;

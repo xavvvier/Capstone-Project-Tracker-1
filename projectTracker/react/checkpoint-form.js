@@ -13,7 +13,8 @@ class CheckpointForm extends React.Component {
             checkpoint: this.emptyEntity(),
             editingItem: null,
             message: null,
-            stages: []
+            stages: [],
+            errors: {}
         };
     }
 
@@ -40,8 +41,19 @@ class CheckpointForm extends React.Component {
        });
     }
 
+    validate = () => {
+       let errors = {};
+       if(!Number(this.state.checkpoint.stageId)>0) {
+          errors.name = "Required field";
+       }
+       this.setState({errors});
+       return !errors.name;
+    }
+
+
     onSubmit = (e) => {
        e.preventDefault();
+       if(!this.validate()) { return; }
        this.setState({loading: true});
        //Change the http method depending if the operation is edit or save
         let method = this.state.editingItem == null ? 'post' : 'put';
@@ -67,7 +79,7 @@ class CheckpointForm extends React.Component {
        });
     }
 
-    onAddNew = (e) => { this.setState({ displayForm: true, checkpoint: this.emptyEntity(), editingItem: null, message: null }); }
+    onAddNew = (e) => { this.setState({ errors: {}, displayForm: true, checkpoint: this.emptyEntity(), editingItem: null, message: null }); }
     onCancel = (e) => { this.setState({ displayForm: false, message: null }); }
     onChange = (e) => { 
        let checkpoint = this.state.checkpoint;
@@ -77,7 +89,7 @@ class CheckpointForm extends React.Component {
 
     onEdit = (item) => {
        let checkpointCopy = Object.assign({}, item);
-       this.setState({ displayForm: true, checkpoint: checkpointCopy, editingItem: item, message: null});
+       this.setState({ errors: {}, displayForm: true, checkpoint: checkpointCopy, editingItem: item, message: null});
     };
 
     onDelete = (item) => {
@@ -107,7 +119,7 @@ class CheckpointForm extends React.Component {
             <div className={this.state.loading?"ui active centered inline loader":""}></div>
             <form className={showForm ? "ui form scale-in-ver-top" : "ui form hid"}
                 method="post" onSubmit={this.onSubmit}>
-                <div className="field">
+                <div className={"field" + (this.state.errors.name?" error ":"")}>
                     <label>Stage</label>
                     <DropDown value={this.state.checkpoint.stageId}
                         name="stageId"
@@ -117,7 +129,7 @@ class CheckpointForm extends React.Component {
                 </div>
                 <div className="field">
                     <label>Description</label>
-                    <input type="text" name="description"
+                    <input type="text" name="description" required="required"
                         value={this.state.checkpoint.description}
                         onChange={this.onChange} maxLength="200"
                         placeholder="Descripion" />
