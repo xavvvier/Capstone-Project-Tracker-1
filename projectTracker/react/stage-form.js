@@ -103,14 +103,14 @@ class StageForm extends React.Component {
                 method="post" onSubmit={this.onSubmit}>
                 <div className="field">
                     <label>Title</label>
-                    <input type="text" name="title"
+                    <input type="text" name="title" required="required"
                         value={this.state.stage.title}
                         onChange={this.onChange} maxLength="200"
                         placeholder="Stage name" />
                 </div>
                 <div className="field">
                     <label>Description</label>
-                    <input type="text" name="description"
+                    <input type="text" name="description" required="required"
                         value={this.state.stage.description}
                         onChange={this.onChange} maxLength="200"
                         placeholder="Description" />

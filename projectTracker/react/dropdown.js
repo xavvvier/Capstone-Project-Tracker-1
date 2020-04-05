@@ -4,7 +4,7 @@ class DropDown extends React.Component{
     render() {
         var {data, value} = this.props;
         return (
-        <select required className="ui search dropdown" 
+        <select required="required" className="ui search dropdown" 
            onChange={this.props.onChange}
            name={this.props.name}
            value={value}>
