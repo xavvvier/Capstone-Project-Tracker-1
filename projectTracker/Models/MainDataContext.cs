@@ -208,7 +208,6 @@ namespace projectTracker.Models
         public IEnumerable<Project> getFilteredProjects(int id)
         {
            var projects = Project.Where(p => p.CampusId == id && p.Status.Name != "Close-out") 
-               // .Where (p => p.Status != "Close-out")
                .Include(p => p.Notes)
                .Include(p => p.Category)
                .Include(p => p.Status)
