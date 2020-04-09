@@ -72,7 +72,7 @@ body > .grid {
    width: 1000px;
 }
 .dashboard .buttons{
-   margin-bottom: 1rem;
+   margin: 1rem 0;
 }
 .dashboard .content{
    width: 100%;
@@ -142,6 +142,13 @@ body > .grid {
 }
 .dashboard .project .checkpoint.enabled label{
    cursor: pointer;
+}
+
+.dashboard .checkpoints.due .title {
+   font-weight: bold;
+}
+.dashboard .checkpoints.due .due-days {
+   padding: 0 .5rem;
 }
 
 #project-form th.sortable {
