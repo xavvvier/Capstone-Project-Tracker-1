@@ -29,7 +29,8 @@ class Dashboard extends React.Component {
          projects: [],
          loading: true,
          message: null,
-         dueDate: ''
+         dueDate: '',
+         checkpointsDue: []
       };
       this.busy = false;
    }
@@ -41,6 +42,59 @@ class Dashboard extends React.Component {
          .then(res => {
             this.setState({ campuses: res.data });
          });
+   }
+
+   dueText = (checkpoint) => {
+      if(checkpoint.dueDate == null) return null;
+      let today = moment().startOf('day');
+      let due = moment(checkpoint.dueDate);
+      let duration = moment.duration(due.diff(today));
+      let times = {
+         y: Math.floor(Math.abs(duration.as('y'))),
+         m: Math.floor(Math.abs(duration.as('M'))),
+         w: Math.floor(Math.abs(duration.as('w'))),
+         d: Math.floor(Math.abs(duration.as('d'))),
+         isOverdue: duration.asDays() < 0
+      };
+      let pluralize = (n, t) => {
+         let asInt = Math.floor(n);
+         if(asInt == 1) {
+            return asInt + ' ' + t;
+         }
+         return asInt + ' ' + t + 's';
+      };
+      let timeAsText = '';
+      if(times.y > 0) {
+         timeAsText = pluralize(times.y, 'year');
+      } else if(times.m > 0) {
+         timeAsText = pluralize(times.m, 'month');
+      } else if(times.w > 0) {
+         timeAsText = pluralize(times.w, 'week');
+      } else {
+         timeAsText = pluralize(times.d, 'day');
+      }
+      if(times.isOverdue) {
+         return timeAsText + ' overdue';
+      } else if(timeAsText == '0 days') {
+         return 'Due today';
+      }
+      return 'Due in ' + timeAsText;
+   };
+
+   loadCheckpointsDue = () => {
+      let mapDueCheckpoints = (project) => {
+         let checkpoint = project.checkpoints
+            .find(c => !c.completed && c.dueDate);
+         if (checkpoint) {
+            let dueDays = this.dueText(checkpoint);
+            return {project, checkpoint, dueDays};
+         }
+         return null;
+      };
+      let {projects} = this.state;
+      let projectChks = projects.map(mapDueCheckpoints)
+         .filter(nc => nc != null);
+      this.setState({checkpointsDue: projectChks});
    }
 
    addNote = (p, e) => { this.project = p; $('.ui.modal.add').modal('show'); }
@@ -78,6 +132,7 @@ class Dashboard extends React.Component {
             projectCp.completed = checkpointPayload.completed;
             Dashboard.calculateProgress(project);
             this.setState({ projects: this.state.projects });
+            this.loadCheckpointsDue();
          });
    }
    onClickDueDate = (cp, e) => {
@@ -93,6 +148,7 @@ class Dashboard extends React.Component {
          .then(res => {
             this.checkpoint.dueDate = dueDate;
             this.setState({projects: this.state.projects});
+            this.loadCheckpointsDue();
          });
    }
 
@@ -103,6 +159,7 @@ class Dashboard extends React.Component {
             const projects = res.data;
             projects.forEach(p => Dashboard.calculateProgress(p));
             this.setState({ projects, loading: false });
+            this.loadCheckpointsDue();
          });
    }
 
@@ -153,6 +210,20 @@ class Dashboard extends React.Component {
 
    render() {
       return (<React.Fragment>
+         {this.state.checkpointsDue.length>0 &&
+            <div className="ui checkpoints due info message">
+              <div className="header">Next checkpoints</div>
+              <ul className="list">
+                {this.state.checkpointsDue.map(chk =>
+                   <li key={chk.project.id}>
+                     <a href={"#project-" + chk.project.id} className="title">{chk.project.partner}</a> : 
+                     <span className="due-days">{chk.dueDays}</span>
+                     ({moment(chk.checkpoint.dueDate).format(SHORT_DATE_FORMAT)})
+                   </li>
+                )}
+              </ul>
+            </div>
+         }
          <div className="ui middle center aligned grid">
             <ButtonGroup id="dashboardButtons" 
                items={this.state.campuses} 
@@ -168,7 +239,7 @@ class Dashboard extends React.Component {
             <div className="content">
                {this.state.projects.map(project => (
                   <React.Fragment key={project.id}>
-                  <article className="project ui two column doubling stackable grid">
+                  <article id={"project-" + project.id} className="project ui two column doubling stackable grid">
                      <div className="column">
                         <span className="title">{project.partner}</span>
                         <span className="grayed">{project.category.name}</span>
