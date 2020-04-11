@@ -240,6 +240,13 @@ namespace projectTracker.Models
                .ToList<Checkpoint>();
         }
 
+      //   //Get Checkpoint Id's for deletion
+      //   public List<Checkpoint> getCheckpointsForDeletion(int id)
+      //   {
+      //      var ids = ProjectCheckpoint.ProjectId (c => c.ProjectId == id).ToList();
+      //      return Checkpoint
+      //   }
+
          public int updateProjectTime(int id) {
             int TotalTime = Note.Where(c => c.ProjectId == id)
             .Sum(c => c.Minutes);
